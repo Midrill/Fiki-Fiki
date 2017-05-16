@@ -28,17 +28,14 @@ public class Umano extends Thread {
     }
 
     // mi restituisce "beneficioFiglio" (a)
-    public int A() {
-        return beneficioFiglio;
-    }
+    public int A() { return beneficioFiglio; }
 
     // mi restituisce "costoFiglio" (b)
-    public int B() {
-        return costoFIglio;
-    }
+    public int B() { return costoFIglio; }
 
     // restitisce il Nome dell'oggetto
-    public String comeMiChiamo() {
-        return this.nome;
+    public String comeMiChiamo() { return this.nome; }
+
+    public void run(){
     }
 }

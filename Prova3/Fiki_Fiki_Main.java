@@ -33,6 +33,8 @@ public class Fiki_Fiki_Main {
         Morigerato M0 = new Morigerato();
         Morigerato M1 = new Morigerato();
 
+        // A1.start();
+
         System.out.println(A0.comeMiChiamo());
         System.out.println(A1.comeMiChiamo());
         System.out.println(A1.A());
@@ -43,6 +45,6 @@ public class Fiki_Fiki_Main {
         System.out.println(M1.comeMiChiamo());
         System.out.println(M1.A());
         System.out.println(M0.B());
-        // System.out.println(A1.C();)
+        // System.out.println(A1.C(); // da errore perchè non ha un valore C
     }
 }
