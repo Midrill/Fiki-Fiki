@@ -1,5 +1,7 @@
 package Prova3;
 
+import java.util.Random;
+
 /**
  * Created by utente on 16/05/2017.
  */
@@ -21,7 +23,25 @@ public class Prudente extends Donna {
 
     // Costruttore Base per l'oggeto
     public Prudente (){
-        super("Prudente" + numeroSeriale);
+        super("P" + numeroSeriale);
         numeroSeriale++;
     }
+
+    /**
+    public synchronized void figliamoPrudente() {
+        if (new Random().nextInt(20) <= 10) {
+            Morigerato M = new Morigerato();
+            Prudente P = new Prudente();
+            notifyAll();
+            M.start();
+            P.start();
+        }
+        else {
+            this.interrupt();
+            notifyAll();
+        }
+        notify();
+    } */
+
+
 }

@@ -14,14 +14,21 @@ public abstract class Uomo extends Umano {
          super(nome);
      }
 
-     //
+    // metodo che viene eredidato dai figli
      public void tuaMamma(Donna D) {
-         System.out.println( getName() + ": mi trombo " + D.getName());
-         D.figliamo();
+         System.out.println(getName() + ": mi trombo " + D.getName());
+         D.figliamoSpregiudicata();
+         this.interrupt();
      }
 
+
+
      // L'uomo toglie dalla synchrolista le donne
-    public void run() {
+    public synchronized void run() {
+        this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
+
+        System.out.println("Sono natO: " + comeMiChiamo());
+
         try {
             for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
                 if (isInterrupted()) throw new InterruptedException();
@@ -30,7 +37,7 @@ public abstract class Uomo extends Umano {
                 tuaMamma(animaGemella);
             }
         } catch (InterruptedException e) {
-            System.out.println("GG WP EAZY");
+            // System.out.println( comeMiChiamo() + " Sono MORTO");
         }
     }
 

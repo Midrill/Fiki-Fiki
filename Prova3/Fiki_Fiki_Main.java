@@ -1,5 +1,6 @@
 package Prova3;
 
+
 /**
  * Created by utente on 16/05/2017.
  */
@@ -24,45 +25,50 @@ public class Fiki_Fiki_Main {
     //    S  (5 , 5)     (-5 , 15)
 
 
-
     public static void main(String[] args) throws InterruptedException {
-        Avventuriero A0 = new Avventuriero();
-        Avventuriero A1 = new Avventuriero();
-        Avventuriero A2 = new Avventuriero();
-        Avventuriero A3 = new Avventuriero();
 
-        A0.start();
-        A1.start();
-        A2.start();
-        A3.start();
+        // dati iniziali della popolazione
+        int numMorigerato = 10;
+        int numAvventuriero = 5;
+        int numPrudente = 5;
+        int numSpregiudicata = 5;
 
-        Spregiudicata S0 = new Spregiudicata();
-        Spregiudicata S1 = new Spregiudicata();
-        Spregiudicata S2 = new Spregiudicata();
-        Spregiudicata S3 = new Spregiudicata();
+        // DONNA
+        for (int i = 0; i < numPrudente ; i++) {
+            Prudente P = new Prudente();
+            P.start();
+            Thread.currentThread().sleep(100);
+            P.interrupt();
+        }
 
-        S0.start();
-        S1.start();
-        S2.start();
-        S3.start();
+        // DONNA
+        for (int i = 0; i < numSpregiudicata ; i++) {
+            Spregiudicata S = new Spregiudicata();
+            S.start();
+            Thread.currentThread().sleep(100);
+            S.interrupt();
+        }
 
-        /**
-        System.out.println(A0.comeMiChiamo());
-        System.out.println(A1.comeMiChiamo());
-        System.out.println(A1.A());
-        System.out.println(A1.B());
-        System.out.println(A2.comeMiChiamo());
-        System.out.println(A3.comeMiChiamo());
-        // System.out.println(A1.C(); // da errore perchè non ha un valore C
-        */
+        // UOMO
+        for (int i = 0; i < numMorigerato ; i++) {
+            Morigerato M = new Morigerato();
+            M.start();
+            Thread.currentThread().sleep(100);
+            M.interrupt();
+        }
+
+        // UOMO
+        for (int i = 0; i < numAvventuriero ; i++) {
+            Avventuriero A = new Avventuriero();
+            A.start();
+            Thread.currentThread().sleep(100);
+            A.interrupt();
+        }
+
+
 
         Thread.currentThread().sleep(100);
-        A0.interrupt();
-        A1.interrupt();
-        A2.interrupt();
-        A3.interrupt();
-
-
+        //Thread.currentThread().interrupt();
 
     }
 }

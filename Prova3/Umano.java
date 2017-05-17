@@ -41,7 +41,7 @@ public class Umano extends Thread {
     // Ho inserito il RUN in UOMO e DONNA
 
     // Qui si descrive cosa fa il THREAD quando viene lanciato
-    public void run(){
+    public synchronized void run(){
     }
 
 }

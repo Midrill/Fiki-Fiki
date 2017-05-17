@@ -1,5 +1,7 @@
 package Prova3;
 
+import java.util.Random;
+
 /**
  * Created by utente on 16/05/2017.
  */
@@ -13,7 +15,25 @@ public class Spregiudicata extends Donna {
 
     // Costruttore Base per l'oggeto
     public Spregiudicata() {
-        super("Spregiudicata" + numeroSeriale);
+        super("S" + numeroSeriale);
         numeroSeriale++;
     }
+
+    /**
+    public synchronized void figliamoSpregiudicata() {
+
+        if (new Random().nextInt(20) <= 10) {
+            Avventuriero A = new Avventuriero();
+            notifyAll();
+            this.interrupt();
+            A.start();
+
+        }
+        else {
+            Spregiudicata B = new Spregiudicata();
+            notifyAll();
+            this.interrupt();
+            B.start();
+        }
+    } */
 }
