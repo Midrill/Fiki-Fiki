@@ -25,26 +25,44 @@ public class Fiki_Fiki_Main {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Avventuriero A0 = new Avventuriero();
         Avventuriero A1 = new Avventuriero();
         Avventuriero A2 = new Avventuriero();
         Avventuriero A3 = new Avventuriero();
-        Morigerato M0 = new Morigerato();
-        Morigerato M1 = new Morigerato();
 
-        // A1.start();
+        A0.start();
+        A1.start();
+        A2.start();
+        A3.start();
 
+        Spregiudicata S0 = new Spregiudicata();
+        Spregiudicata S1 = new Spregiudicata();
+        Spregiudicata S2 = new Spregiudicata();
+        Spregiudicata S3 = new Spregiudicata();
+
+        S0.start();
+        S1.start();
+        S2.start();
+        S3.start();
+
+        /**
         System.out.println(A0.comeMiChiamo());
         System.out.println(A1.comeMiChiamo());
         System.out.println(A1.A());
         System.out.println(A1.B());
         System.out.println(A2.comeMiChiamo());
         System.out.println(A3.comeMiChiamo());
-        System.out.println(M0.comeMiChiamo());
-        System.out.println(M1.comeMiChiamo());
-        System.out.println(M1.A());
-        System.out.println(M0.B());
         // System.out.println(A1.C(); // da errore perchè non ha un valore C
+        */
+
+        Thread.currentThread().sleep(100);
+        A0.interrupt();
+        A1.interrupt();
+        A2.interrupt();
+        A3.interrupt();
+
+
+
     }
 }

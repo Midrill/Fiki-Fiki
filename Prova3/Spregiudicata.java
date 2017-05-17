@@ -12,7 +12,7 @@ public class Spregiudicata extends Donna {
     private static int numeroSeriale = 0;
 
     // Costruttore Base per l'oggeto
-    public Spregiudicata(String nome) {
+    public Spregiudicata() {
         super("Spregiudicata" + numeroSeriale);
         numeroSeriale++;
     }

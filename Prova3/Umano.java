@@ -1,5 +1,7 @@
 package Prova3;
 
+
+
 /**
  * Created by utente on 16/05/2017.
  */
@@ -36,6 +38,10 @@ public class Umano extends Thread {
     // restitisce il Nome dell'oggetto
     public String comeMiChiamo() { return this.nome; }
 
+    // Ho inserito il RUN in UOMO e DONNA
+
+    // Qui si descrive cosa fa il THREAD quando viene lanciato
     public void run(){
     }
+
 }
