@@ -24,21 +24,21 @@ public abstract class Donna extends Umano{
         notify();
         */
     }
-    public synchronized void figliamoSpregiudicata() {
-
+    public synchronized void figliamoSpregiudicata(Uomo U) {
+        U.interrupt(); // interrompe il padre
         if (new Random().nextInt(20) <= 10) {
             Avventuriero A = new Avventuriero();
             // notifyAll();
             // this.interrupt();
             A.start();
-            A.interrupt();
+            // A.interrupt();
         }
         else {
             Spregiudicata B = new Spregiudicata();
             // notifyAll();
             // this.interrupt();
             B.start();
-            B.interrupt();
+           // B.interrupt(); // non le da abbastanza tempo per mettersi nella lista
         }
 
     }
@@ -47,15 +47,15 @@ public abstract class Donna extends Umano{
     public synchronized void run() { // synchronized!
         this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
 
-        System.out.println("Sono natA: " + comeMiChiamo());
+        // System.out.println("Sono natA: " + comeMiChiamo()); // mostra il nome del Thread quando nasce
 
         try {
             for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
                 if (isInterrupted()) throw new InterruptedException();
-                sleep(new Random().nextInt(20));
+                sleep(20);
                 AreaAccoppiamento.coda.insert(this);
-                wait();
-                // this.interrupt();
+               // wait();
+                this.interrupt();   // interrompe la donna
                //  System.out.println("Me l'ha buttato");
             }
         } catch (InterruptedException e) {

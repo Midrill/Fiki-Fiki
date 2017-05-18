@@ -29,10 +29,11 @@ public class Fiki_Fiki_Main {
 
         // dati iniziali della popolazione
         int numMorigerato = 10;
-        int numAvventuriero = 5;
+        int numAvventuriero = 0;
         int numPrudente = 5;
         int numSpregiudicata = 5;
 
+        System.out.println("M: "+ numMorigerato + "/ A; " + numAvventuriero + "/ P : " + numPrudente + "/ S: " + numSpregiudicata );
         // DONNA
         for (int i = 0; i < numPrudente ; i++) {
             Prudente P = new Prudente();
