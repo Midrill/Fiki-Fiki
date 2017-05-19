@@ -9,6 +9,9 @@ public class Avventuriero extends Uomo{
 
     // Estende Uomo che estende Umano
 
+    public static int avventurieri = 0;
+
+
     // Ogni Avventuriero ha un Nome "AvventurieroN" dove N è il numero seriale che ogni volta viene aumentato di 1
     // private String name = "Avventuriero";
     private static int numeroSeriale = 0;
@@ -17,25 +20,39 @@ public class Avventuriero extends Uomo{
     public Avventuriero() {
         super("A" + numeroSeriale);
         numeroSeriale++;
-        // this.beneficioFiglio = beneficioFiglio;
-        // this.costoFIglio = costoFIglio;
-        // this.nascita = nascita;
-        // this.quantoVivo = quantoVivo;
     }
 
-    /**
-    public void tuaMamma(Donna D) {
-        if (new Random().nextInt(20) <= 15){
-            System.out.println(getName() + ": mi trombo " + D.getName());
-            D.figliamoSpregiudicata();
-            D.interrupt();
-            this.interrupt();
+    public void gestoreCoppia(Donna D) throws InterruptedException {
+        System.out.println(getName() + ": Ho scelto " + D.getName());
+        D.figliamoSpregiudicata(this);
+    }
 
-        }
-        else {
-            D.interrupt();
-            this.interrupt();
-        }
-    } */
+    // Ha il proprio run poichè non deve avere la possibilità di estrarre dalla CODA Prudenti
+    public synchronized void run() {
+        avventurieri++;
 
+        this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
+
+        // System.out.println("Sono natO: " + comeMiChiamo()); // mostra il nome del Thread quando nasce
+
+        try {
+            for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
+                if (isInterrupted()) throw new InterruptedException();
+                sleep(5);
+                if (!AreaAccoppiamento.coda.isEmpty()) {
+                    Donna D = AreaAccoppiamento.coda.extract();
+                    if (D.cheDonnaSei()) {  // se lo donna è Spregiudicata
+                        gestoreCoppia(D);
+                    }
+                    else {
+                        AreaAccoppiamento.coda.insert(D);
+                        this.sleep(10);}
+                }
+                else { this.interrupt();}
+            }
+        } catch (InterruptedException e) {
+            // System.out.println( comeMiChiamo() + " Sono MORTO");
+        }
+    }
 }
+

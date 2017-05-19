@@ -9,6 +9,8 @@ public class Prudente extends Donna {
 
     // Estende Donna che estende Umano
 
+    public static int prudenti = 0;
+
     // dato che serve per le coppie
     protected  static int costoCorteggiamento = 3; // c : costo del corteggiamento
 
@@ -27,21 +29,41 @@ public class Prudente extends Donna {
         numeroSeriale++;
     }
 
-    /**
-    public synchronized void figliamoPrudente() {
-        if (new Random().nextInt(20) <= 10) {
-            Morigerato M = new Morigerato();
-            Prudente P = new Prudente();
-            notifyAll();
-            M.start();
-            P.start();
-        }
-        else {
-            this.interrupt();
-            notifyAll();
-        }
-        notify();
-    } */
+    public boolean cheDonnaSei () { // true se sono Spregiudicata, False se Prudente
+        return false;
+    }
 
+    // quando chiamata dal Morigerato
+    public synchronized void figliamoPrudente(Uomo U) {
+        U.interrupt(); // interrompe il padre
+        for (int i = 0; i < new Random().nextInt(6); i++) {
+            if (new Random().nextInt(2) == 1) {
+                Morigerato M = new Morigerato();
+                M.start();
+            } else {
+                Prudente P = new Prudente();
+                P.start();
+            }
+        }
+    }
+    public synchronized void run() { // synchronized!
+        prudenti++;
+        this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
+
+        // System.out.println("Sono natA: " + comeMiChiamo()); // mostra il nome del Thread quando nasce
+
+        try {
+            for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
+                if (isInterrupted()) throw new InterruptedException();
+                sleep(5);
+                AreaAccoppiamento.coda.insert(this);
+                // wait();
+                this.interrupt();   // interrompe la donna
+                //  System.out.println("Me l'ha buttato");
+            }
+        } catch (InterruptedException e) {
+            //System.out.println(comeMiChiamo() + " Sono MORTA");
+        }
+    }
 
 }

@@ -14,8 +14,18 @@ public abstract class Donna extends Umano{
         super(nome);
     }
 
-    // bisogna specializzarlo all'interno delle sottoclassi
-    public synchronized void figliamoPrudente() {
+    // restituisce il tipo della signorina con un booleano
+    public boolean cheDonnaSei () { // true se sono Spregiudicata, False se Prudente
+        return true;
+    }
+
+
+    // Morigerato si associa a Spregiudicata
+    public synchronized void figliamoSpregiudicataMaConAmore(Uomo U) {
+    }
+
+    // Morigerato si associa con Prudente
+    public synchronized void figliamoPrudente(Uomo U) {
         /**
         Avventuriero A = new Avventuriero();
         Spregiudicata B = new Spregiudicata();
@@ -24,8 +34,10 @@ public abstract class Donna extends Umano{
         notify();
         */
     }
+
+    // Avventuriero si associa con Spregiudicata
     public synchronized void figliamoSpregiudicata(Uomo U) {
-        U.interrupt(); // interrompe il padre
+    /**   U.interrupt(); // interrompe il padre
         if (new Random().nextInt(20) <= 10) {
             Avventuriero A = new Avventuriero();
             // notifyAll();
@@ -40,7 +52,7 @@ public abstract class Donna extends Umano{
             B.start();
            // B.interrupt(); // non le da abbastanza tempo per mettersi nella lista
         }
-
+     */
     }
 
     // le donne si inseriscono nella synchrocoda
@@ -52,7 +64,7 @@ public abstract class Donna extends Umano{
         try {
             for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
                 if (isInterrupted()) throw new InterruptedException();
-                sleep(20);
+                sleep(5);
                 AreaAccoppiamento.coda.insert(this);
                // wait();
                 this.interrupt();   // interrompe la donna

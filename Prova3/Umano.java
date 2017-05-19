@@ -14,6 +14,7 @@ public class Umano extends Thread {
 //  protected  static int costoCorteggiamento = 3; // c : costo del corteggiamento
 
 
+
     //la "generazione" di nascita e quante "generazioni" vive prima di morire
     public int nascita = 0;
     protected int quantoVivo = 1;

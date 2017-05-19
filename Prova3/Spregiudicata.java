@@ -9,6 +9,8 @@ public class Spregiudicata extends Donna {
 
     // Estende Donna che estende Umano
 
+    public static int spregiudicate = 0;
+
     // Ogni Spregiudicata ha un Nome "SpregiudicataN" dove N è il numero seriale che ogni volta viene aumentato di 1
     // private String nome = "Spregiudicata";
     private static int numeroSeriale = 0;
@@ -19,21 +21,58 @@ public class Spregiudicata extends Donna {
         numeroSeriale++;
     }
 
-    /**
-    public synchronized void figliamoSpregiudicata() {
+    public boolean cheDonnaSei() { // true se sono Spregiudicata, False se Prudente
+        return true;
+    }
 
-        if (new Random().nextInt(20) <= 10) {
+    // chiamata dall'Avventuriero che l'ha estratta dalla coda
+    public synchronized void figliamoSpregiudicata(Uomo U) {
+        U.interrupt(); // interrompe il padre
+        if (new Random().nextInt(2) <= 1) {
             Avventuriero A = new Avventuriero();
-            notifyAll();
-            this.interrupt();
             A.start();
-
-        }
-        else {
+        } else {
             Spregiudicata B = new Spregiudicata();
-            notifyAll();
-            this.interrupt();
             B.start();
         }
-    } */
+
+    }
+
+    // Chiama dal Prudente che l'ha estratta dalla coda
+    public synchronized void figliamoSpregiudicataMaConAmore(Uomo U) {
+        U.interrupt(); // interrompe il padre
+        for (int i = 0; i < new Random().nextInt(3); i++) {
+            if (new Random().nextInt(20) <= 10) {
+                Morigerato M = new Morigerato();
+                M.start();
+            } else {
+                Spregiudicata B = new Spregiudicata();
+                B.start();
+            }
+        }
+    }
+
+    // deve notificare gli Avventurieri
+    public synchronized void run() { // synchronized!
+        spregiudicate++;
+
+        this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
+
+        // System.out.println("Sono natA: " + comeMiChiamo()); // mostra il nome del Thread quando nasce
+
+        try {
+            for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
+                if (isInterrupted()) throw new InterruptedException();
+                sleep(5);
+                AreaAccoppiamento.coda.insert(this);
+                notifyAll();
+
+                this.interrupt();   // interrompe la donna
+            }
+        } catch (InterruptedException e) {
+            //System.out.println(comeMiChiamo() + " Sono MORTA");
+        }
+    }
+
+
 }
