@@ -26,33 +26,10 @@ public abstract class Donna extends Umano{
 
     // Morigerato si associa con Prudente
     public synchronized void figliamoPrudente(Uomo U) {
-        /**
-        Avventuriero A = new Avventuriero();
-        Spregiudicata B = new Spregiudicata();
-        B.start();
-        A.start();
-        notify();
-        */
     }
 
     // Avventuriero si associa con Spregiudicata
     public synchronized void figliamoSpregiudicata(Uomo U) {
-    /**   U.interrupt(); // interrompe il padre
-        if (new Random().nextInt(20) <= 10) {
-            Avventuriero A = new Avventuriero();
-            // notifyAll();
-            // this.interrupt();
-            A.start();
-            // A.interrupt();
-        }
-        else {
-            Spregiudicata B = new Spregiudicata();
-            // notifyAll();
-            // this.interrupt();
-            B.start();
-           // B.interrupt(); // non le da abbastanza tempo per mettersi nella lista
-        }
-     */
     }
 
     // le donne si inseriscono nella synchrocoda
@@ -66,7 +43,6 @@ public abstract class Donna extends Umano{
                 if (isInterrupted()) throw new InterruptedException();
                 sleep(5);
                 AreaAccoppiamento.coda.insert(this);
-               // wait();
                 this.interrupt();   // interrompe la donna
                //  System.out.println("Me l'ha buttato");
             }

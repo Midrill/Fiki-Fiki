@@ -27,11 +27,53 @@ public class Fiki_Fiki_Main {
 
     public static void main(String[] args) throws InterruptedException {
 
+        for (int i = 0; i < 4; i++) {
+            Morigerato M = new Morigerato();
+            Avventuriero A = new Avventuriero();
+            Prudente P = new Prudente();
+            Spregiudicata S = new Spregiudicata();
+
+            M.start();
+            A.start();
+            P.start();
+            S.start();
+
+            AreaAccoppiamento.waitFor(3000);
+            M.interrupt();
+            A.interrupt();
+            P.interrupt();
+            S.interrupt();
+
+
+            System.out.println("G:"+i +" M:" + AreaAccoppiamento.morigerati + " A:" + AreaAccoppiamento.avventurieri + " P:" + AreaAccoppiamento.prudenti + " S:" + AreaAccoppiamento.spregiudicate);
+            // System.out.println("G:"+(i+1) +" M:" + AreaAccoppiamento.futuriMorigerati + " A:" + AreaAccoppiamento.futuriAvventurieri + " P:" + AreaAccoppiamento.futuriPrudenti + " S:" + AreaAccoppiamento.futuriSpregiudicate);
+
+            AreaAccoppiamento.morigerati = AreaAccoppiamento.futuriMorigerati;
+            AreaAccoppiamento.avventurieri = AreaAccoppiamento.futuriAvventurieri;
+            AreaAccoppiamento.prudenti = AreaAccoppiamento.futuriPrudenti;
+            AreaAccoppiamento.spregiudicate = AreaAccoppiamento.futuriSpregiudicate;
+
+            AreaAccoppiamento.futuriMorigerati = 0;
+            AreaAccoppiamento.futuriAvventurieri = 0;
+            AreaAccoppiamento.futuriPrudenti = 0;
+            AreaAccoppiamento.futuriSpregiudicate = 0;
+
+    }
+
+    // System.out.println("valore iniziale " + AreaAccoppiamento.morigerati);
+    // System.out.println("Quanti morigerati si sono generati " + AreaAccoppiamento.futuriMorigerati);
+    // AreaAccoppiamento.morigerati = AreaAccoppiamento.futuriMorigerati;
+    // AreaAccoppiamento.futuriMorigerati = 0;
+
+
+    }
+}
+/**
        // dati iniziali della popolazione
-        int numMorigerato = 50;
-        int numAvventuriero = 50;
-        int numPrudente = 50;
-        int numSpregiudicata = 50;
+        int numMorigerato = 1000;
+        int numAvventuriero = 1000;
+        int numPrudente = 1000;
+        int numSpregiudicata = 1000;
 
         System.out.println("M: "+ numMorigerato + "/ A; " + numAvventuriero + "/ P : " + numPrudente + "/ S: " + numSpregiudicata );
 
@@ -71,10 +113,10 @@ public class Fiki_Fiki_Main {
         // Dopo un Tempo massimo tutti devono Interrompersi e stampare il risultato
 
 
-        Thread.currentThread().sleep(10);
+        //Thread.currentThread().sleep(10);
         //Thread.currentThread().interrupt();
     }
-}
+}*/
 /**
         Prudente P = new Prudente();
         Spregiudicata S = new Spregiudicata();

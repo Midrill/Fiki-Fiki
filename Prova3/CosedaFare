@@ -4,3 +4,13 @@ Una volta che i metodi funzionano, sottomettere la versione su Github in modo da
 Dopo provare a specializzare i metodi, spostandoli nelle classi Morigerato Avventuriero Spregiudicata Prudente
 
 
+Creo un Thread e metto nel Run un For in base al numero di "tipoPersona" lui si ripete. Ogni volta che si accoppia
+aggiorna il numero "popolazione futura" che nel momento in cui finirà, farà il return di quel numero che si metterà
+al posto di "popolazione attuale" e ciò farà partire la prossima generazione.
+
+esempio:
+Avventuriero si accoppia con  Spregiudicata : Max 2 figli
+Morigerato si accoppia con Spregiudicata : Max 4 figli
+Morigerato si accoppia con Prudente : Max 6 figli
+
+

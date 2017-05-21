@@ -1,5 +1,6 @@
 package Prova3;
 
+import java.awt.geom.Area;
 import java.util.Random;
 
 /**
@@ -17,7 +18,7 @@ public class Spregiudicata extends Donna {
 
     // Costruttore Base per l'oggeto
     public Spregiudicata() {
-        super("S" + numeroSeriale);
+        super("S"); // + numeroSeriale);
         numeroSeriale++;
     }
 
@@ -27,29 +28,41 @@ public class Spregiudicata extends Donna {
 
     // chiamata dall'Avventuriero che l'ha estratta dalla coda
     public synchronized void figliamoSpregiudicata(Uomo U) {
-        U.interrupt(); // interrompe il padre
-        if (new Random().nextInt(2) <= 1) {
-            Avventuriero A = new Avventuriero();
-            A.start();
+        // U.interrupt(); // interrompe il padre
+
+        AreaAccoppiamento.futuriAvventurieri++;
+        AreaAccoppiamento.futuriSpregiudicate++;
+
+        /**if (new Random().nextInt(2) <= 1) {
+            //Avventuriero A = new Avventuriero();
+            //A.start();
+            AreaAccoppiamento.futuriAvventurieri++;
         } else {
-            Spregiudicata B = new Spregiudicata();
-            B.start();
-        }
+            //Spregiudicata B = new Spregiudicata();
+            //B.start();
+            AreaAccoppiamento.futuriSpregiudicate++;
+        } */
 
     }
 
     // Chiama dal Prudente che l'ha estratta dalla coda
     public synchronized void figliamoSpregiudicataMaConAmore(Uomo U) {
-        U.interrupt(); // interrompe il padre
-        for (int i = 0; i < new Random().nextInt(3); i++) {
+        // U.interrupt(); // interrompe il padre
+
+        AreaAccoppiamento.futuriMorigerati++;
+        AreaAccoppiamento.futuriSpregiudicate++;
+
+       /** for (int i = 0; i < new Random().nextInt(3); i++) {
             if (new Random().nextInt(20) <= 10) {
-                Morigerato M = new Morigerato();
-                M.start();
+                //Morigerato M = new Morigerato();
+                //M.start();
+                AreaAccoppiamento.futuriMorigerati++;
             } else {
-                Spregiudicata B = new Spregiudicata();
-                B.start();
+                //Spregiudicata B = new Spregiudicata();
+                //B.start();
+                AreaAccoppiamento.futuriSpregiudicate++;
             }
-        }
+        } */
     }
 
     // deve notificare gli Avventurieri
@@ -61,16 +74,17 @@ public class Spregiudicata extends Donna {
         // System.out.println("Sono natA: " + comeMiChiamo()); // mostra il nome del Thread quando nasce
 
         try {
-            for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
-                if (isInterrupted()) throw new InterruptedException();
-                sleep(5);
-                AreaAccoppiamento.coda.insert(this);
-                notifyAll();
+            for (int i = 0; i < AreaAccoppiamento.spregiudicate; i++) {
+                this.setName(comeMiChiamo()+i);
 
-                this.interrupt();   // interrompe la donna
+                if (isInterrupted()) throw new InterruptedException();
+                AreaAccoppiamento.coda.insert(this);
+
+                //this.interrupt();   // interrompe la donna
             }
         } catch (InterruptedException e) {
             //System.out.println(comeMiChiamo() + " Sono MORTA");
+
         }
     }
 

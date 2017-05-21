@@ -18,12 +18,12 @@ public class Avventuriero extends Uomo{
 
     // Costruttore Base per l'oggeto
     public Avventuriero() {
-        super("A" + numeroSeriale);
+        super("A"); // + numeroSeriale);
         numeroSeriale++;
     }
 
     public void gestoreCoppia(Donna D) throws InterruptedException {
-        System.out.println(getName() + ": Ho scelto " + D.getName());
+       // System.out.println(getName() + ": Ho la ciolla allegra " + D.getName());
         D.figliamoSpregiudicata(this);
     }
 
@@ -31,27 +31,31 @@ public class Avventuriero extends Uomo{
     public synchronized void run() {
         avventurieri++;
 
-        this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
+        //this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
 
         // System.out.println("Sono natO: " + comeMiChiamo()); // mostra il nome del Thread quando nasce
 
         try {
-            for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
+            for (int i = 0; i < AreaAccoppiamento.avventurieri; i++) {
+                this.setName(comeMiChiamo()+i);
+
                 if (isInterrupted()) throw new InterruptedException();
-                sleep(5);
+                // sleep(5);
                 if (!AreaAccoppiamento.coda.isEmpty()) {
                     Donna D = AreaAccoppiamento.coda.extract();
                     if (D.cheDonnaSei()) {  // se lo donna è Spregiudicata
                         gestoreCoppia(D);
                     }
                     else {
+                        i= i-1;
                         AreaAccoppiamento.coda.insert(D);
-                        this.sleep(10);}
+                        this.sleep(5);}
                 }
-                else { this.interrupt();}
+                else { this.sleep(5);}
             }
         } catch (InterruptedException e) {
             // System.out.println( comeMiChiamo() + " Sono MORTO");
+
         }
     }
 }

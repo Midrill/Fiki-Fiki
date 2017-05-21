@@ -1,5 +1,6 @@
 package Prova3;
 
+import java.awt.geom.Area;
 import java.util.Random;
 
 /**
@@ -18,12 +19,12 @@ public class Morigerato extends Uomo {
 
     // Costruttore Base per l'oggeto
     public Morigerato() {
-        super("M" + numeroSeriale);
+        super("M"); // + numeroSeriale);
         numeroSeriale++;
     }
 
     public void gestoreCoppia(Donna D) {
-        System.out.println(getName() + ": Ho scelto " + D.getName());
+       // System.out.println(getName() + ": ce l'ho buttato! " + D.getName());
         if (D.cheDonnaSei() == true) {
             D.figliamoSpregiudicataMaConAmore(this); // se la coda non è vuota // c'è una donna
             }
@@ -35,19 +36,21 @@ public class Morigerato extends Uomo {
     // Crea Thread Morigerato e aggiorna il numero dei morigerati
     public synchronized void run() {
         morigerati++;
-        this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
+        //this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
 
         // System.out.println("Sono natO: " + comeMiChiamo()); // mostra il nome del Thread quando nasce
-
         try {
-            for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
+            for (int i = 0; i < AreaAccoppiamento.morigerati; i++) {
+                this.setName(comeMiChiamo()+i);
+
                 if (isInterrupted()) throw new InterruptedException();
-                sleep(5);
                 if (!AreaAccoppiamento.coda.isEmpty()) {
                     Donna animaGemella = AreaAccoppiamento.coda.extract();
                     gestoreCoppia(animaGemella);
                 }
-                else { this.interrupt();}
+                else {
+                    i = i-1;
+                    this.sleep(5);}
             }
         } catch (InterruptedException e) {
             // System.out.println( comeMiChiamo() + " Sono MORTO");

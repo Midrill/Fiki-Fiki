@@ -1,5 +1,6 @@
 package Prova3;
 
+import java.awt.geom.Area;
 import java.util.Random;
 
 /**
@@ -25,7 +26,7 @@ public class Prudente extends Donna {
 
     // Costruttore Base per l'oggeto
     public Prudente (){
-        super("P" + numeroSeriale);
+        super("P"); // + numeroSeriale);
         numeroSeriale++;
     }
 
@@ -35,16 +36,21 @@ public class Prudente extends Donna {
 
     // quando chiamata dal Morigerato
     public synchronized void figliamoPrudente(Uomo U) {
-        U.interrupt(); // interrompe il padre
-        for (int i = 0; i < new Random().nextInt(6); i++) {
+        // U.interrupt(); // interrompe il padre
+        AreaAccoppiamento.futuriPrudenti++;
+        AreaAccoppiamento.futuriMorigerati++;
+
+       /** for (int i = 0; i < new Random().nextInt(6); i++) {
             if (new Random().nextInt(2) == 1) {
-                Morigerato M = new Morigerato();
-                M.start();
+                //Morigerato M = new Morigerato();
+                //M.start();
+                AreaAccoppiamento.futuriMorigerati++;
             } else {
-                Prudente P = new Prudente();
-                P.start();
+                //Prudente P = new Prudente();
+                //P.start();
+                AreaAccoppiamento.futuriPrudenti++;
             }
-        }
+        } */
     }
     public synchronized void run() { // synchronized!
         prudenti++;
@@ -53,16 +59,17 @@ public class Prudente extends Donna {
         // System.out.println("Sono natA: " + comeMiChiamo()); // mostra il nome del Thread quando nasce
 
         try {
-            for (int i = 0; i < AreaAccoppiamento.tempo; i++) {
+            for (int i = 0; i < AreaAccoppiamento.prudenti; i++) {
+                this.setName(comeMiChiamo()+i);
+
                 if (isInterrupted()) throw new InterruptedException();
-                sleep(5);
                 AreaAccoppiamento.coda.insert(this);
-                // wait();
-                this.interrupt();   // interrompe la donna
-                //  System.out.println("Me l'ha buttato");
+                // this.interrupt();   // interrompe la donna
             }
         } catch (InterruptedException e) {
             //System.out.println(comeMiChiamo() + " Sono MORTA");
+
+
         }
     }
 
