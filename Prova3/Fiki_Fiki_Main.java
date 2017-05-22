@@ -27,7 +27,10 @@ public class Fiki_Fiki_Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        for (int i = 0; i < 6; i++) {
+        AreaAccoppiamento nuovaArea = new AreaAccoppiamento();
+        nuovaArea.successioneGenerazioni(10);
+
+/**        for (int i = 0; i < 6; i++) {
             Morigerato M = new Morigerato();
             Avventuriero A = new Avventuriero();
             Prudente P = new Prudente();
@@ -59,7 +62,7 @@ public class Fiki_Fiki_Main {
             AreaAccoppiamento.futuriPrudenti = 0;
             AreaAccoppiamento.futuriSpregiudicate = 0;
 
-    }
+    } */
 
     // System.out.println("valore iniziale " + AreaAccoppiamento.morigerati);
     // System.out.println("Quanti morigerati si sono generati " + AreaAccoppiamento.futuriMorigerati);
