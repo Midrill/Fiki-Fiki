@@ -21,7 +21,13 @@ public class Avventuriero extends Uomo{
 
     public void gestoreCoppia(Donna D) throws InterruptedException {
         // System.out.println(getName() + ": Ho la ciolla allegra " + D.getName());
-        D.figliamoSpregiudicata(this);
+        if (D.cheDonnaSei() == true) {
+            D.figliamoSpregiudicata(this); // se la coda non è vuota // c'è una donna
+        }
+        else {
+            D.figliamoPrudenteAvventurosa(this);
+        }
+        ;
     }
 
     // Ha il proprio run poichè non deve avere la possibilità di estrarre dalla CODA Prudenti
@@ -39,15 +45,12 @@ public class Avventuriero extends Uomo{
                 // sleep(5);
                 if (!AreaAccoppiamento.coda.isEmpty()) {
                     Donna D = AreaAccoppiamento.coda.extract();
-                    if (D.cheDonnaSei()) {  // se lo donna è Spregiudicata
-                        gestoreCoppia(D);
-                    }
-                    else {
-                        i= i-1;
-                        AreaAccoppiamento.coda.insert(D);
-                        this.sleep(5);}
+                    gestoreCoppia(D);
                 }
-                else { this.sleep(5);}
+                else {
+                    i = i-1;
+                    this.sleep(1);
+                }
             }
         } catch (InterruptedException e) {
             // System.out.println( comeMiChiamo() + " Sono MORTO");

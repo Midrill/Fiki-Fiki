@@ -37,7 +37,7 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
 
         for (int i = 0; i < N+1; i++) {
 
-            System.out.println("Accoppiamento in corso, SHHHH!!!");
+            System.out.println("Accoppiamoci SCIOCCO!");
 
             Morigerato M = new Morigerato();
             Avventuriero A = new Avventuriero();
@@ -68,6 +68,7 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
             System.out.println("G:"+i +" M:" + AreaAccoppiamento.morigerati + " A:" + AreaAccoppiamento.avventurieri + " P:" + AreaAccoppiamento.prudenti + " S:" + AreaAccoppiamento.spregiudicate);
             System.out.println("G:"+i +" M:" + (new DecimalFormat("##.##").format(percM)) + " A:" + (new DecimalFormat("##.##").format(percA))+ " P:" + (new DecimalFormat("##.##").format(percP)) + " S:" + (new DecimalFormat("##.##").format(percS)));
             // System.out.println("G:"+(i+1) +" M:" + AreaAccoppiamento.futuriMorigerati + " A:" + AreaAccoppiamento.futuriAvventurieri + " P:" + AreaAccoppiamento.futuriPrudenti + " S:" + AreaAccoppiamento.futuriSpregiudicate);
+            System.out.println("");
 
             AreaAccoppiamento.morigerati = AreaAccoppiamento.futuriMorigerati;
             AreaAccoppiamento.avventurieri = AreaAccoppiamento.futuriAvventurieri;
@@ -80,15 +81,28 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
             AreaAccoppiamento.futuriSpregiudicate = 0;
 
         }
+        morigerati = 1000;
+        avventurieri = 1000;
+        prudenti = 1000;
+        spregiudicate = 1000;
     }
 
     public void successioneGenerazioni(int Mo, int Av, int Pr, int Sp, int N) {
+
+
         this.morigerati = Mo;
         this.avventurieri = Av;
         this.prudenti = Pr;
         this.spregiudicate = Sp;
 
+        int intervallo = 10000;
+        if (Mo + Av + Pr + Sp <= 8000) intervallo = 5000;
+        if (Mo + Av + Pr + Sp <= 6000) intervallo = 4000 ;
+        if (Mo + Av + Pr + Sp <= 4000) intervallo = 3000;
+
         for (int i = 0; i < N+1; i++) {
+
+            System.out.println("Ti piace farlo strano eh??? sporcaccione!");
 
             Morigerato M = new Morigerato();
             Avventuriero A = new Avventuriero();
@@ -100,7 +114,7 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
             P.start();
             S.start();
 
-            AreaAccoppiamento.waitFor(3000);
+            AreaAccoppiamento.waitFor(intervallo );
             M.interrupt();
             A.interrupt();
             P.interrupt();
@@ -108,8 +122,18 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
 
             AreaAccoppiamento.coda = new SynchroCoda<>(); // Svuota la coda
 
+
+            float umanita = morigerati+avventurieri+prudenti+spregiudicate;
+            float percM = (morigerati/umanita)*100;
+            float percA = (avventurieri/umanita)*100;
+            float percP = (prudenti/umanita)*100;
+            float percS = (spregiudicate/umanita)*100;
+
+
             System.out.println("G:"+i +" M:" + AreaAccoppiamento.morigerati + " A:" + AreaAccoppiamento.avventurieri + " P:" + AreaAccoppiamento.prudenti + " S:" + AreaAccoppiamento.spregiudicate);
+            System.out.println("G:"+i +" M:" + (new DecimalFormat("##.##").format(percM)) + " A:" + (new DecimalFormat("##.##").format(percA))+ " P:" + (new DecimalFormat("##.##").format(percP)) + " S:" + (new DecimalFormat("##.##").format(percS)));
             // System.out.println("G:"+(i+1) +" M:" + AreaAccoppiamento.futuriMorigerati + " A:" + AreaAccoppiamento.futuriAvventurieri + " P:" + AreaAccoppiamento.futuriPrudenti + " S:" + AreaAccoppiamento.futuriSpregiudicate);
+            System.out.println("");
 
             AreaAccoppiamento.morigerati = AreaAccoppiamento.futuriMorigerati;
             AreaAccoppiamento.avventurieri = AreaAccoppiamento.futuriAvventurieri;
@@ -122,6 +146,11 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
             AreaAccoppiamento.futuriSpregiudicate = 0;
 
         }
+        morigerati = 1000;
+        avventurieri = 1000;
+        prudenti = 1000;
+        spregiudicate = 1000;
+
     }
 
 }

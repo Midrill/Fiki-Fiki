@@ -41,12 +41,12 @@ public class Morigerato extends Uomo {
 
                 if (isInterrupted()) throw new InterruptedException();
                 if (!AreaAccoppiamento.coda.isEmpty()) {
-                    Donna animaGemella = AreaAccoppiamento.coda.extract();
-                    gestoreCoppia(animaGemella);
+                    Donna D = AreaAccoppiamento.coda.extract();
+                    gestoreCoppia(D);
                 }
                 else {
                     i = i-1;
-                    this.sleep(5);}
+                    this.sleep(1);}
             }
         } catch (InterruptedException e) {
             // System.out.println( comeMiChiamo() + " Sono MORTO");

@@ -24,11 +24,17 @@ public class Fiki_Fiki_Main {
     //    #############################
     //    S  (5 , 5)     (-5 , 15)
 
+    // N valore = N figli
+    // -5 = 1 , 0 = 2, 2 = 3/5 2 figli e 2/5 3 figli , 5 = 3, 15 = 5
+
 
     public static void main(String[] args) throws InterruptedException {
 
         AreaAccoppiamento nuovaArea = new AreaAccoppiamento();
-        nuovaArea.successioneGenerazioni(10);
+        nuovaArea.successioneGenerazioni(5);
+        // nuovaArea.successioneGenerazioni(2);
+        // nuovaArea.successioneGenerazioni(50, 50, 50, 50, 5);
+        // nuovaArea.successioneGenerazioni(20000, 20000, 20000, 20000, 5);
 
 /**        for (int i = 0; i < 6; i++) {
             Morigerato M = new Morigerato();

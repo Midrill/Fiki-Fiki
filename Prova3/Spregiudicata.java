@@ -28,25 +28,31 @@ public class Spregiudicata extends Donna {
     public synchronized void figliamoSpregiudicata(Uomo U) {
         // U.interrupt(); // interrompe il padre
 
+        // 15 = 5
         AreaAccoppiamento.futuriAvventurieri++;
+        AreaAccoppiamento.futuriAvventurieri++;
+        AreaAccoppiamento.futuriAvventurieri++;
+        AreaAccoppiamento.futuriAvventurieri++;
+        AreaAccoppiamento.futuriAvventurieri++;
+        // -5 = 1
         AreaAccoppiamento.futuriSpregiudicate++;
 
-        /**if (new Random().nextInt(2) <= 1) {
-            //Avventuriero A = new Avventuriero();
-            //A.start();
-            AreaAccoppiamento.futuriAvventurieri++;
-        } else {
-            //Spregiudicata B = new Spregiudicata();
-            //B.start();
-            AreaAccoppiamento.futuriSpregiudicate++;
-        } */
+        //if (new Random().nextInt(2) == 1) { AreaAccoppiamento.futuriAvventurieri++; }
+        //else { AreaAccoppiamento.futuriSpregiudicate++; }
 
     }
 
     // Chiama dal Prudente che l'ha estratta dalla coda
     public synchronized void figliamoSpregiudicataMaConAmore(Uomo U) {
 
+        // 5 = 3
         AreaAccoppiamento.futuriMorigerati++;
+        AreaAccoppiamento.futuriMorigerati++;
+        AreaAccoppiamento.futuriMorigerati++;
+
+        // 5 = 3
+        AreaAccoppiamento.futuriSpregiudicate++;
+        AreaAccoppiamento.futuriSpregiudicate++;
         AreaAccoppiamento.futuriSpregiudicate++;
 
     }

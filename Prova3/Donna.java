@@ -24,13 +24,20 @@ public abstract class Donna extends Umano{
     public synchronized void figliamoSpregiudicataMaConAmore(Uomo U) {
     }
 
+    // Avventuriero si associa con Spregiudicata
+    public synchronized void figliamoSpregiudicata(Uomo U) {
+    }
+
+
     // Morigerato si associa con Prudente
     public synchronized void figliamoPrudente(Uomo U) {
     }
 
-    // Avventuriero si associa con Spregiudicata
-    public synchronized void figliamoSpregiudicata(Uomo U) {
+    // Avventuriero si accosia con Prudente
+    public synchronized void figliamoPrudenteAvventurosa(Uomo U) {
+
     }
+
 
     // le donne si inseriscono nella synchrocoda
     public synchronized void run() { // synchronized!
