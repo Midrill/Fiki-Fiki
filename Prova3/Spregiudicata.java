@@ -10,8 +10,6 @@ public class Spregiudicata extends Donna {
 
     // Estende Donna che estende Umano
 
-    public static int spregiudicate = 0;
-
     // Ogni Spregiudicata ha un Nome "SpregiudicataN" dove N è il numero seriale che ogni volta viene aumentato di 1
     // private String nome = "Spregiudicata";
     private static int numeroSeriale = 0;
@@ -47,29 +45,16 @@ public class Spregiudicata extends Donna {
 
     // Chiama dal Prudente che l'ha estratta dalla coda
     public synchronized void figliamoSpregiudicataMaConAmore(Uomo U) {
-        // U.interrupt(); // interrompe il padre
 
         AreaAccoppiamento.futuriMorigerati++;
         AreaAccoppiamento.futuriSpregiudicate++;
 
-       /** for (int i = 0; i < new Random().nextInt(3); i++) {
-            if (new Random().nextInt(20) <= 10) {
-                //Morigerato M = new Morigerato();
-                //M.start();
-                AreaAccoppiamento.futuriMorigerati++;
-            } else {
-                //Spregiudicata B = new Spregiudicata();
-                //B.start();
-                AreaAccoppiamento.futuriSpregiudicate++;
-            }
-        } */
     }
 
     // deve notificare gli Avventurieri
     public synchronized void run() { // synchronized!
-        spregiudicate++;
 
-        this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
+        // this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
 
         // System.out.println("Sono natA: " + comeMiChiamo()); // mostra il nome del Thread quando nasce
 

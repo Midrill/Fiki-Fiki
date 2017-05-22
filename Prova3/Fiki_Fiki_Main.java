@@ -27,7 +27,7 @@ public class Fiki_Fiki_Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             Morigerato M = new Morigerato();
             Avventuriero A = new Avventuriero();
             Prudente P = new Prudente();
@@ -44,6 +44,7 @@ public class Fiki_Fiki_Main {
             P.interrupt();
             S.interrupt();
 
+            AreaAccoppiamento.coda = new SynchroCoda<>(); // Svuota la coda
 
             System.out.println("G:"+i +" M:" + AreaAccoppiamento.morigerati + " A:" + AreaAccoppiamento.avventurieri + " P:" + AreaAccoppiamento.prudenti + " S:" + AreaAccoppiamento.spregiudicate);
             // System.out.println("G:"+(i+1) +" M:" + AreaAccoppiamento.futuriMorigerati + " A:" + AreaAccoppiamento.futuriAvventurieri + " P:" + AreaAccoppiamento.futuriPrudenti + " S:" + AreaAccoppiamento.futuriSpregiudicate);
