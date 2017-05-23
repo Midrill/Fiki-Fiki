@@ -37,7 +37,7 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
 
         for (int i = 0; i < N+1; i++) {
 
-            System.out.println("Accoppiamoci SCIOCCO!");
+            //System.out.println("Accoppiamoci SCIOCCO!");
 
             Morigerato M = new Morigerato();
             Avventuriero A = new Avventuriero();
@@ -65,10 +65,10 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
             float percS = (spregiudicate/umanita)*100;
 
 
-            System.out.println("G:"+i +" M:" + AreaAccoppiamento.morigerati + " A:" + AreaAccoppiamento.avventurieri + " P:" + AreaAccoppiamento.prudenti + " S:" + AreaAccoppiamento.spregiudicate);
-            System.out.println("G:"+i +" M:" + (new DecimalFormat("##.##").format(percM)) + " A:" + (new DecimalFormat("##.##").format(percA))+ " P:" + (new DecimalFormat("##.##").format(percP)) + " S:" + (new DecimalFormat("##.##").format(percS)));
+            //System.out.println("G:"+i +" M:" + AreaAccoppiamento.morigerati + " A:" + AreaAccoppiamento.avventurieri + " P:" + AreaAccoppiamento.prudenti + " S:" + AreaAccoppiamento.spregiudicate);
+            System.out.println("G:"+i +" M:" + (new DecimalFormat("##.##").format(percM)) + "% A:" + (new DecimalFormat("##.##").format(percA))+ "% P:" + (new DecimalFormat("##.##").format(percP)) + "% S:" + (new DecimalFormat("##.##").format(percS))+"%");
             // System.out.println("G:"+(i+1) +" M:" + AreaAccoppiamento.futuriMorigerati + " A:" + AreaAccoppiamento.futuriAvventurieri + " P:" + AreaAccoppiamento.futuriPrudenti + " S:" + AreaAccoppiamento.futuriSpregiudicate);
-            System.out.println("");
+            //System.out.println("");
 
             AreaAccoppiamento.morigerati = AreaAccoppiamento.futuriMorigerati;
             AreaAccoppiamento.avventurieri = AreaAccoppiamento.futuriAvventurieri;
@@ -90,10 +90,10 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
     public void successioneGenerazioni(int Mo, int Av, int Pr, int Sp, int N) {
 
 
-        this.morigerati = Mo;
-        this.avventurieri = Av;
-        this.prudenti = Pr;
-        this.spregiudicate = Sp;
+        morigerati = Mo;
+        avventurieri = Av;
+        prudenti = Pr;
+        spregiudicate = Sp;
 
         int intervallo = 10000;
         if (Mo + Av + Pr + Sp <= 8000) intervallo = 5000;
@@ -102,7 +102,7 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
 
         for (int i = 0; i < N+1; i++) {
 
-            System.out.println("Ti piace farlo strano eh??? sporcaccione!");
+            //System.out.println("Ti piace farlo strano eh??? sporcaccione!");
 
             Morigerato M = new Morigerato();
             Avventuriero A = new Avventuriero();
@@ -130,10 +130,10 @@ public class AreaAccoppiamento { // Dove si incontrano bulli e pupe
             float percS = (spregiudicate/umanita)*100;
 
 
-            System.out.println("G:"+i +" M:" + AreaAccoppiamento.morigerati + " A:" + AreaAccoppiamento.avventurieri + " P:" + AreaAccoppiamento.prudenti + " S:" + AreaAccoppiamento.spregiudicate);
-            System.out.println("G:"+i +" M:" + (new DecimalFormat("##.##").format(percM)) + " A:" + (new DecimalFormat("##.##").format(percA))+ " P:" + (new DecimalFormat("##.##").format(percP)) + " S:" + (new DecimalFormat("##.##").format(percS)));
+            // System.out.println("G:"+i +" M:" + AreaAccoppiamento.morigerati + " A:" + AreaAccoppiamento.avventurieri + " P:" + AreaAccoppiamento.prudenti + " S:" + AreaAccoppiamento.spregiudicate);
+            System.out.println("G:"+i +" M:" + (new DecimalFormat("##.##").format(percM)) + "% A:" + (new DecimalFormat("##.##").format(percA))+ "% P:" + (new DecimalFormat("##.##").format(percP)) + "% S:" + (new DecimalFormat("##.##").format(percS))+"%");
             // System.out.println("G:"+(i+1) +" M:" + AreaAccoppiamento.futuriMorigerati + " A:" + AreaAccoppiamento.futuriAvventurieri + " P:" + AreaAccoppiamento.futuriPrudenti + " S:" + AreaAccoppiamento.futuriSpregiudicate);
-            System.out.println("");
+            // System.out.println("");
 
             AreaAccoppiamento.morigerati = AreaAccoppiamento.futuriMorigerati;
             AreaAccoppiamento.avventurieri = AreaAccoppiamento.futuriAvventurieri;

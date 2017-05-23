@@ -24,16 +24,34 @@ public class Fiki_Fiki_Main {
     //    #############################
     //    S  (5 , 5)     (-5 , 15)
 
+    //    Analisi Situazione
+    //    ##### M ############################################################### A ####################################
+    //    P  (2 , 2) situazione stabile con vantaggi per entrambi uguale a 2   (0 , 0) situazione stabile
+    //    ##### M ############################################################### A ####################################
+    //    S  (5 , 5) situazione stabile con vantaggi per entrambi uguale a 5  (-5 , 15) forte vantaggio per A 5 volte S
+
+
+
+    // 5/8 Morigerati, 3/8 Avventurieri / 30 , 18 = 96 / 31 , 19 = 100
+    // 5/6 Prudenti, 1/6 Spregiudicate  / 40 , 8  = 96 / 41 , 9  = 100
+
+    // G:n M:31 A:19 P:41 S:9
+
     // N valore = N figli
     // -5 = 1 , 0 = 2, 2 = 3/5 2 figli e 2/5 3 figli , 5 = 3, 15 = 5
-
+    // -5 = 0, 0 = 1, 2 = 1, 5 = 2, 15 = 3
 
     public static void main(String[] args) throws InterruptedException {
 
+
+        Thread.currentThread().sleep(2);
+
+
         AreaAccoppiamento nuovaArea = new AreaAccoppiamento();
-        nuovaArea.successioneGenerazioni(5);
+        // nuovaArea.successioneGenerazioni(5);
         // nuovaArea.successioneGenerazioni(2);
-        // nuovaArea.successioneGenerazioni(50, 50, 50, 50, 5);
+        // nuovaArea.successioneGenerazioni(50, 50, 50, 50, 20);
+        nuovaArea.successioneGenerazioni(10, 10, 10, 10, 15);
         // nuovaArea.successioneGenerazioni(20000, 20000, 20000, 20000, 5);
 
 /**        for (int i = 0; i < 6; i++) {

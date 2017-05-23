@@ -12,7 +12,6 @@ public class Prudente extends Donna {
 
     // dato che serve per le coppie
     protected static int costoCorteggiamento = 3; // c : costo del corteggiamento
-    Random random = new Random();
 
     // mi restituisce il "costoCorteggiamento" (c)
     public int C() {
@@ -33,10 +32,15 @@ public class Prudente extends Donna {
         return false;
     }
 
-    // quando chiamata dal Morigerato
+    // Morigerato e Prudente
     public synchronized void figliamoPrudente(Uomo U) {
-        int c = random.nextInt(5);
-        if (c < 2) {
+
+        AreaAccoppiamento.futuriPrudenti += 1;
+
+
+        AreaAccoppiamento.futuriMorigerati += 1;
+        /**
+        if (new Random().nextInt(5) < 2) {
             AreaAccoppiamento.futuriPrudenti++;
             AreaAccoppiamento.futuriPrudenti++;
 
@@ -50,15 +54,14 @@ public class Prudente extends Donna {
             AreaAccoppiamento.futuriMorigerati++;
             AreaAccoppiamento.futuriMorigerati++;
             AreaAccoppiamento.futuriMorigerati++;
-        }
+        } */
     }
 
+    // Avventuriero associato a Prudente
     public synchronized void figliamoPrudenteAvventurosa (Uomo U) {
-        AreaAccoppiamento.futuriPrudenti++;
-        AreaAccoppiamento.futuriPrudenti++;
+        AreaAccoppiamento.futuriPrudenti += 1;
 
-        AreaAccoppiamento.futuriAvventurieri++;
-        AreaAccoppiamento.futuriAvventurieri++;
+        AreaAccoppiamento.futuriAvventurieri += 1;
     }
     public synchronized void run() { // synchronized!
 
@@ -71,6 +74,7 @@ public class Prudente extends Donna {
                 this.setName(comeMiChiamo()+i);
 
                 if (isInterrupted()) throw new InterruptedException();
+
                 AreaAccoppiamento.coda.insert(this);
                 // this.interrupt();   // interrompe la donna
             }

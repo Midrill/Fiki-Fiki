@@ -24,40 +24,30 @@ public class Spregiudicata extends Donna {
         return true;
     }
 
-    // chiamata dall'Avventuriero che l'ha estratta dalla coda
+    // Avventuriero e Spregiudicata
     public synchronized void figliamoSpregiudicata(Uomo U) {
         // U.interrupt(); // interrompe il padre
 
         // 15 = 5
-        AreaAccoppiamento.futuriAvventurieri++;
-        AreaAccoppiamento.futuriAvventurieri++;
-        AreaAccoppiamento.futuriAvventurieri++;
-        AreaAccoppiamento.futuriAvventurieri++;
-        AreaAccoppiamento.futuriAvventurieri++;
+        AreaAccoppiamento.futuriAvventurieri += 1;
         // -5 = 1
-        AreaAccoppiamento.futuriSpregiudicate++;
+        AreaAccoppiamento.futuriSpregiudicate += 1;
 
         //if (new Random().nextInt(2) == 1) { AreaAccoppiamento.futuriAvventurieri++; }
         //else { AreaAccoppiamento.futuriSpregiudicate++; }
 
     }
 
-    // Chiama dal Prudente che l'ha estratta dalla coda
+    // Morigerato e Spregiudicata
     public synchronized void figliamoSpregiudicataMaConAmore(Uomo U) {
 
         // 5 = 3
-        AreaAccoppiamento.futuriMorigerati++;
-        AreaAccoppiamento.futuriMorigerati++;
-        AreaAccoppiamento.futuriMorigerati++;
+        AreaAccoppiamento.futuriMorigerati += 1;
 
         // 5 = 3
-        AreaAccoppiamento.futuriSpregiudicate++;
-        AreaAccoppiamento.futuriSpregiudicate++;
-        AreaAccoppiamento.futuriSpregiudicate++;
-
+        AreaAccoppiamento.futuriSpregiudicate += 1;
     }
 
-    // deve notificare gli Avventurieri
     public synchronized void run() { // synchronized!
 
         // this.setName(comeMiChiamo()); // il Thread prende il nome dell'oggetto
@@ -69,6 +59,7 @@ public class Spregiudicata extends Donna {
                 this.setName(comeMiChiamo()+i);
 
                 if (isInterrupted()) throw new InterruptedException();
+
                 AreaAccoppiamento.coda.insert(this);
 
                 //this.interrupt();   // interrompe la donna
