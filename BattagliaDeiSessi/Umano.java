@@ -5,7 +5,7 @@ package BattagliaDeiSessi;
 /**
  * Created by utente on 16/05/2017.
  */
-public class Umano extends Thread {
+public abstract class Umano extends Thread {
 
     // i dati della tabella che ogni individuo ha in comune senza un valore assegnato
     protected  static int beneficioFiglio = 15;     // a : premio per il successo nella generazione di figli
