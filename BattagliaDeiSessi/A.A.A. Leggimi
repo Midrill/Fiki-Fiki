@@ -16,3 +16,21 @@ G:x+1 M:31% A:19% P:41% S:9%
 ...
 ...
 ...
+
+Definire dei metodi e dei vincoli che portano la Simulazione dove vogliamo noi (M:31% A:19% P:41% S:9%).
+
+Utilizzando una metafora, le DOnne vanno in un bar in ordine casuale mantendendo un ordine FIFO. Arrivano gli uomini
+in ordine casuale e partendo dalla prima DOnna la portano fuori dal Bar e le chiede CheDonnaSei? Una volta che la
+donna dice il suo tipo, l'uomo chiama il metodo per figliare e si riproducono. Dopo essers riprodotti i genitori muoiono
+e i figli sono pronti per riprodursi alla prossima Generazione.
+
+Ho individuato dei punti in cui intervenire:
+Nel momeno di inserirsi nel Bar o di entrare nel Bar;
+Dopo aver estratto la donna dal bar;
+Dopo aver chiesto alla donna che tipo è;
+Nel momento di fare dei figli;
+Dopo aver fatto figli;
+
+
+Si potrebbero crare 4 code, ogni popolazione si inserisce in questa coda e con i Threadvengono estratti e tutti scelgno
+Arriva il thread ed estrare dalla coda del tipo e a seconda di che tipo è sceglie dalle 2 code da cui può estrarre

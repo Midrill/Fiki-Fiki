@@ -55,10 +55,10 @@ public class Fiki_Fiki_Main {
     public static void main(String[] args) throws InterruptedException {
 
         AreaAccoppiamento nuovaArea = new AreaAccoppiamento();
-        nuovaArea.successioneGenerazioni(20);
+        nuovaArea.successioneGenerazioni(5);
         // nuovaArea.successioneGenerazioni(2);
         // nuovaArea.successioneGenerazioni(50, 50, 50, 50, 20);
-        // nuovaArea.successioneGenerazioni(10, 10, 10, 10, 5);
+        // nuovaArea.successioneGenerazioni(10, 10, 10, 10, 10);
         // nuovaArea.successioneGenerazioni(20000, 20000, 20000, 20000, 5);
     }
 }
