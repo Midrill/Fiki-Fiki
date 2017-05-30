@@ -1,6 +1,8 @@
 package BattagliaDeiSessi;
 
 
+import java.util.Random;
+
 /**
  * Created by utente on 16/05/2017.
  */
@@ -56,6 +58,7 @@ public class Fiki_Fiki_Main {
 
         AreaAccoppiamento nuovaArea = new AreaAccoppiamento();
         nuovaArea.successioneGenerazioni(5);
+
         // nuovaArea.successioneGenerazioni(2);
         // nuovaArea.successioneGenerazioni(50, 50, 50, 50, 20);
         // nuovaArea.successioneGenerazioni(10, 10, 10, 10, 10);

@@ -1,11 +1,16 @@
 package BattagliaDeiSessi;
 
+import java.util.Random;
+
 /**
  * Created by utente on 16/05/2017.
  */
 public class Prudente extends Donna {
 
     // Estende Donna che estende Umano
+
+    // Percentuale delle Prudenti Atteso, rispetto alle DONNE
+    static double percPrud = (5.0/8.0) *100;
 
     // dato che serve per le coppie
     protected static int costoCorteggiamento = 3; // c : costo del corteggiamento
@@ -30,31 +35,34 @@ public class Prudente extends Donna {
     }
 
     // Morigerato e Prudente
-    public synchronized void figliamoMoriPrud(Uomo U) {
-
-        AreaAccoppiamento.futuriPrudenti += 1;
-
-
-        AreaAccoppiamento.futuriMorigerati += 1;
+    public  void figliamoMoriPrud(Uomo U) {
+        if (new Random().nextInt(2) == 1) {
+            AreaAccoppiamento.futuriMorigerati += 5;
+            AreaAccoppiamento.futuriPrudenti += 5;
+        }
+        U.interrupt();
     }
 
     // Avventuriero associato a Prudente
-    public synchronized void figliamoAvvePrud(Uomo U) {
-        AreaAccoppiamento.futuriPrudenti += 1;
-
-        AreaAccoppiamento.futuriAvventurieri += 1;
+    public void figliamoAvvePrud(Uomo U) {
+        AreaAccoppiamento.futuriAvventurieri += 2;
+        AreaAccoppiamento.futuriPrudenti += 2;
+        U.interrupt();
     }
     public synchronized void run() { // synchronized!
         try {
-            for (int i = 0; i < AreaAccoppiamento.prudenti; i++) {
-                this.setName(comeMiChiamo()+i);
-
+            this.setName(comeMiChiamo() + numeroSeriale++);
+            while (!isInterrupted()) {
                 if (isInterrupted()) throw new InterruptedException();
 
-                AreaAccoppiamento.coda.insert(this);
+
+                AreaAccoppiamento.codaPrudenti.insert(this);
+                this.interrupt();
+                // notifyAll();
             }
+            if (isInterrupted()) throw new InterruptedException();
         } catch (InterruptedException e) {
-            //System.out.println(comeMiChiamo() + " Sono MORTA");
+            // System.out.println(comeMiChiamo() + " Sono MORTA");
         }
     }
 
