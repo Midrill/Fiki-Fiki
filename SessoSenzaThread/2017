@@ -1,0 +1,70 @@
+PROVA CHE SI FERMA SU  M:62%  A:38% e  P:67%  S:33%
+
+Idea :
+Sono le spregiudicate a scegliere per prime.
+Metà Spregiudicate va con gli Avventurieri, gli atlri Avventurieri muoiono. Generano 8 Avv e 2 Pru (-5) - inteso come donna dell'altro tipo
+Metà Spregiudicate va con i Morigerati. 5 Mori 5 Spregiu
+Il restante dei Morigerati va con le Prudenti, le altre prudenti muoiono. 2 Mori 2 Prud
+( provare a farle sopravvivere facendole accopiare con gli Avventurieri 1avv 1 prud)
+
+        int M = 10, A = 10, P = 10, S = 10;
+        int m, a, p, s;
+        int sMezzi, cita = 1, tarzan = 1;
+        float percMaschi, percFemmine,percM, percA,percP,percS;
+        for (int i = 0; i < 100; i++) {
+            sMezzi = S/2;
+            M = M - sMezzi;  // Aggiorna il numero dei Morigerati di partenza
+            m = 5 * sMezzi;  // m = Morigerati futuri con Spregiudicata
+            a = 8 * sMezzi;  // a = avventurieri futuri
+            if (M >= P) {
+                tarzan = P * 2;
+                p = P * 2;   // p = prudenti future con Morigerati
+            }  else  {
+                tarzan = M * 2;
+                p = M * 2 ; // p = prudenti future con Morigerati
+            }
+            m = m + tarzan; // m = morigerati futuri con Prudenti
+            p = p + 2*sMezzi;  // p = prudenti future dall'Avventuriero per Spregiudicata (-5)
+            s = 5 * sMezzi; // s = spregiudicata future con Morigerato
+
+            if (i == cita*10 ) {
+                cita++;
+                m = m / 5;
+                a = a /5;
+                p = p / 5;
+                s = s /5;
+            }
+            M = m/2; A = a/2; P = p/2; S = s/2;
+            percMaschi = M + A;
+            percFemmine = P + S;
+            percM = M / percMaschi;
+            percA = A / percMaschi;
+            percP = P / percFemmine;
+            percS = S / percFemmine;
+            System.out.println("G"+i +"  M:" + (new DecimalFormat("##.##").format(percM)) + "  A;" +  (new DecimalFormat("##.##").format(percA))+"  P:" +  (new DecimalFormat("##.##").format(percP))+ "  S:" +  (new DecimalFormat("##.##").format(percS)));
+        }
+
+
+2/3 delle S va con gli A e 1/3 delle S va con i M, il resto degli M si accoppia con le P e fanno i figli
+ unterzo = S/3;
+            dueterzi = S - unterzo;
+            // Avv X Spre
+            a = dueterzi * 8;
+            p = dueterzi * 2;
+
+            // Mori X Spre
+            m = unterzo * 5;
+            M = M - unterzo;
+            s = unterzo * 5;
+
+            // Mori x Prud
+            if ( M >= P ) {
+                p = p + P * 2;
+                m = m + P * 2;
+            } else {
+                p = p + M * 2;
+                m = m + M * 2;
+            }
+
+
+
