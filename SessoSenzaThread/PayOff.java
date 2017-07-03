@@ -18,12 +18,14 @@ public class PayOff {
         this.costoCorteggiamento = 3;
     }
 
+    // Costruttore del Payoff con valori scelti in modo arbitrario
     public PayOff(int a, int b, int c) {
         beneficioFiglio = a;
         costoFiglio = b;
         costoCorteggiamento = c;
     }
 
+    // stampa i valori a schermo
     public void stampa() {
         System.out.println("Beneficio figlio = " + beneficioFiglio);
         System.out.println("Costo Figlio = " + costoFiglio);
@@ -32,23 +34,22 @@ public class PayOff {
 
 
     // Morigerato
-    private float payOffMorigeratoPerPrudente(){return beneficioFiglio -costoFiglio/2 -costoCorteggiamento;}
-    private float payOffMorigeratoPerSpregiudicata(){
-        return beneficioFiglio - costoFiglio/2;}
+    public static float payOffMorigeratoPerPrudente(){return beneficioFiglio -costoFiglio/2 -costoCorteggiamento;}
+    public static float payOffMorigeratoPerSpregiudicata(){return beneficioFiglio - costoFiglio/2;}
 
 
     // Avventuriero
-    private float payOffAvventurieroPerPrudente(){return 0;} // Cotrollare se c'è una formula che fa venire 0
-    private float payOffAvventurieroPerSpregiudicata(){return beneficioFiglio;}
+    public static float payOffAvventurieroPerPrudente(){return 0;} // Cotrollare se c'è una formula che fa venire 0
+    public static float payOffAvventurieroPerSpregiudicata(){return beneficioFiglio;}
 
     // Prudente
-    private float payOffPrudentePerMorigerato(){return beneficioFiglio - costoFiglio/2 -costoCorteggiamento;}
-    private float payOffPrudentePerAvventuriero(){return 0;} // Cotrollare se c'è una formula che fa venire 0
+    public static float payOffPrudentePerMorigerato(){return beneficioFiglio - costoFiglio/2 -costoCorteggiamento;}
+    public static float payOffPrudentePerAvventuriero(){return 0;} // Cotrollare se c'è una formula che fa venire 0
 
 
     // Spregiudicata
-    private float payOffSpregiudicataPerMorigerato(){return beneficioFiglio - costoFiglio/2;}
-    private float payOffSpregiudicataPerAvvemturiero(){return beneficioFiglio - costoFiglio;}
+    public static float payOffSpregiudicataPerMorigerato(){return beneficioFiglio - costoFiglio/2;}
+    public static float payOffSpregiudicataPerAvvemturiero(){return beneficioFiglio - costoFiglio;}
 
 
     //    Esempio con a=15, b=20, c = 3
@@ -58,6 +59,7 @@ public class PayOff {
     //    S  (5 , 5)     (-5 , 15)
 
 
+    // Stampa i Valori dei Payoff sottoforma di Griglia
     public void payOffASchermo(){
         System.out.println("##### M ########## A ########");
         System.out.println("P  ("+ payOffPrudentePerMorigerato() +" , "+ payOffMorigeratoPerPrudente() + ")   " +
@@ -77,28 +79,4 @@ public class PayOff {
      * Stesso per gli uomini.
      */
 
-    private float convenienzaMorigerato(){return Persone.Prudente * payOffMorigeratoPerPrudente() + Persone.Spregiudicata * payOffMorigeratoPerSpregiudicata() ;}
-    private float convenienzaAvventuriero(){return Persone.Prudente * payOffAvventurieroPerPrudente() + Persone.Spregiudicata * payOffAvventurieroPerSpregiudicata();}
-    private float convenienzaPrudente(){return Persone.Morigerato * payOffPrudentePerMorigerato() + Persone.Avventuriero * payOffPrudentePerAvventuriero() ;}
-    private float convenienzaSpregiudicata(){return Persone.Morigerato * payOffSpregiudicataPerMorigerato() + Persone.Avventuriero * payOffSpregiudicataPerAvvemturiero();}
-
-
-    private float percentualeMorigerato() { // la % Avventuieri è 1-percentualeMorigerato
-
-
-        float x;
-        float y;
-        // payOffMorigeratoPerPrudente() * x = payOffMorigeratoPerSpregiudicata() * y;
-        // 2*5/6 + 0*1/6 = 5*5/8 + (-5 * 5/8);
-        // 2*x + 0*(1 -x) = 5* y + (-5 * (1 -y)
-
-
-        return 0;
-    }
-
-    private float percentualePrudente() {// la % Spregiudicata è 1-percentualePrudente
-        float z;
-        float w;
-        return 0;
-    }
 }
