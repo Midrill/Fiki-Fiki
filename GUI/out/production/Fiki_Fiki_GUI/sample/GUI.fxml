@@ -11,34 +11,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller = "sample.Controller">
    <children>
-      <SplitPane dividerPositions="0.25" layoutX="87.0" layoutY="78.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.25" layoutX="87.0" layoutY="78.0" prefHeight="600.0" prefWidth="800.0"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <VBox id="Input VBox" layoutX="8.0" layoutY="96.0" prefHeight="598.0" prefWidth="197.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox id="Input VBox" layoutX="8.0" layoutY="96.0" prefHeight="598.0" prefWidth="197.0"
+                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button id="Start" mnemonicParsing="false" onAction="#start" prefHeight="25.0" prefWidth="202.0" text="Start Simulation" textAlignment="CENTER" />
+                        <Button fx:id="start" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0"
+                                text="Start Simulation" textAlignment="CENTER" onAction = "#HandleClick" />
                         <VBox id="MAPS VBox">
                            <children>
                               <Label id="MAPS Label" text="MAPS Input" />
-                              <TextField id="M" text="1000" />
-                              <TextField id="A" text="1000" />
-                              <TextField id="P" text="1000" />
-                              <TextField id="S" text="1000" />
+                              <TextField fx:id="M" text="1000" onAction = "#HandleClick" />
+                              <TextField fx:id="A" text="1000" onAction = "#HandleClick" />
+                              <TextField fx:id="P" text="1000" onAction = "#HandleClick" />
+                              <TextField fx:id="S" text="1000" onAction = "#HandleClick" />
                            </children>
                         </VBox>
                         <VBox id="abc VBox">
                            <children>
                               <Label id="abc Label" text="abc Input" />
-                              <TextField id="a" text="15" />
-                              <TextField id="b" text="20" />
-                              <TextField id="c" text="5" />
+                              <TextField fx:id="a" text="15" onAction = "#HandleClick" />
+                              <TextField fx:id="b" text="20" onAction = "#HandleClick" />
+                              <TextField fx:id="c" text="5" onAction = "#HandleClick" />
                            </children>
                         </VBox>
-                        <PieChart id="MAPS Start Chart" prefHeight="188.0" prefWidth="200.0" title="Initial Stage MAPS Ratio" />
-                        <PieChart id="MAPS End Chart" prefHeight="183.0" prefWidth="200.0" title="Final Stage MAPS Ratio" />
+                        <PieChart fx:id="MAPSStartChart" prefHeight="188.0" prefWidth="200.0" title="Initial Stage MAPS Ratio" />
+                        <PieChart fx:id="MAPSEndChart" prefHeight="183.0" prefWidth="200.0" title="Final Stage MAPS Ratio" />
                      </children>
                   </VBox>
                </children>
@@ -47,7 +52,7 @@
                <children>
                   <VBox id="Popuation To Equilibrium Chart" prefHeight="474.0" prefWidth="593.0">
                      <children>
-                        <BarChart title="Morigerati">
+                        <BarChart fx:id="MChart" title="Morigerati">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
@@ -55,7 +60,7 @@
                               <NumberAxis autoRanging="false" side="LEFT" />
                            </yAxis>
                         </BarChart>
-                        <BarChart title="Avventurieri">
+                        <BarChart fx:id="AChart" title="Avventurieri">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
@@ -63,7 +68,7 @@
                               <NumberAxis autoRanging="false" side="LEFT" />
                            </yAxis>
                         </BarChart>
-                        <BarChart title="Prudenti">
+                        <BarChart fx:id="PChart" title="Prudenti">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
@@ -71,7 +76,7 @@
                               <NumberAxis autoRanging="false" side="LEFT" />
                            </yAxis>
                         </BarChart>
-                        <BarChart title="Spregiudicate">
+                        <BarChart fx:id="SChart" title="Spregiudicate">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
