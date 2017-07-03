@@ -1,7 +1,5 @@
 package SessoSenzaThread;
 
-import BattagliaDeiSessi.Morigerato;
-
 import java.text.DecimalFormat;
 
 /**

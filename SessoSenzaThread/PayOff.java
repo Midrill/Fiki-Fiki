@@ -1,8 +1,5 @@
 package SessoSenzaThread;
 
-import BattagliaDeiSessi.Morigerato;
-import BattagliaDeiSessi.Spregiudicata;
-
 /**
  * Created by utente on 06/06/2017.
  */

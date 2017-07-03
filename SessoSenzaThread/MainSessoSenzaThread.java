@@ -1,8 +1,5 @@
 package SessoSenzaThread;
 
-import java.text.DecimalFormat;
-import java.util.Random;
-
 /**
  * Created by utente on 06/06/2017.
  */

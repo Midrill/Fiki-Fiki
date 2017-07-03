@@ -7,17 +7,20 @@ import java.util.Random;
  */
 public class Accopiamento {
 
-    int divisore = new Random().nextInt(3);
-    int fortunati = (500 / 2) /  (divisore+1);
     Persone Per;
     PayOff Cost;
+
+    int divisore = new Random().nextInt(3);
+    int fortunati = (250) /  (divisore+1);
+    int cicli = 50;
+    double[] MAPS;
+    int indice;
+
     // Costruttore accoppiamento, prende 7 parametri, i primi 4 sono le persone e gli ultimi 3 sono i payoff
     public Accopiamento(int M,int A,int P,int S, int a, int b, int c){
         this.Per = new Persone(M,A,P,S);
         this.Cost = new PayOff(a,b,c);
     }
-
-
     public Accopiamento(int M, int A, int P, int S) {
         this.Per = new Persone(M,A,P,S);
         this.Cost = new PayOff();
@@ -34,6 +37,8 @@ public class Accopiamento {
     public float bonusPrudente() {return PayOff.payOffPrudentePerMorigerato() * Persone.Morigerato + PayOff.payOffPrudentePerAvventuriero() * Persone.Avventuriero;}
     public float bonusSpregiudicata() {return PayOff.payOffSpregiudicataPerMorigerato() * Persone.Morigerato + PayOff.payOffSpregiudicataPerAvvemturiero() * Persone.Avventuriero;}
 
+
+    // Verifica quando si è raggiunta la stabilità
     public void stabilita() {
         if ( (bonusAvventuriero()* 1.1) < bonusMorigerato() && bonusMorigerato() < bonusAvventuriero() * 0.9) {
             if ((bonusMorigerato() * 1.1) < bonusAvventuriero() && bonusAvventuriero() < bonusMorigerato() * 0.9) {
@@ -48,13 +53,15 @@ public class Accopiamento {
 
 
 
+    // Funzione che Gestisce l'accoppiamento
     public void centroAccoppiamento(){
 
-
+        MAPS = new double[cicli*4];
+        indice = 0;
 
         int z = 1;
         int equilibrio = 0;
-        for (int n = 0; n < 100; n++) {
+        for (int n = 0; n < cicli; n++) {
 
             // rimpicciolisce i numeri dimezzanoli (servono numeri >100)
             if (n == z * 5) {
@@ -104,6 +111,15 @@ public class Accopiamento {
                     if (bM < bA) coppiaSxA();
                 }
             }
+            MAPS[indice] = Persone.percMorigerato();
+            indice++;
+            MAPS[indice] = Persone.percAvventuriero();
+            indice++;
+            MAPS[indice] = Persone.percPrudente();
+            indice++;
+            MAPS[indice] = Persone.percSpregiudicata();
+            indice++;
+            System.out.print("Ciclo N: " + (n+1) +"  ");
             Per.stampaPerc();
         }
     }
