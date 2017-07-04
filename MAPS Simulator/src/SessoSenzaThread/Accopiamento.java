@@ -119,7 +119,14 @@ public class Accopiamento {
             indice++;
             MAPS[indice] = Persone.percSpregiudicata();
             indice++;
+            System.out.print("Ciclo N: " + (n+1) +"  ");
+            Per.stampaPerc();
         }
+        this.stampaArray();
+    }
+
+    public double[] stampaArray() {
+        return MAPS;
     }
 
     // Figli Morigerato
@@ -138,10 +145,5 @@ public class Accopiamento {
     // Figli Spregiudicata
     public void coppiaSxM(){Persone.Spregiudicata++; Persone.Morigerato++;}
     public void coppiaSxA(){Persone.Spregiudicata++; Persone.Avventuriero++;}
-
-
-    public double[] output(){
-        return MAPS;
-    }
 
 }

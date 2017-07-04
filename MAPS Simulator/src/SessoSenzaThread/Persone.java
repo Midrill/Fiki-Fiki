@@ -49,10 +49,30 @@ public class Persone {
 
 
     // Percentuali degli individui sulla popolazione Maschile - Femminile
-    public static double percMorigerato(){return (0.0 + Morigerato) / (Morigerato+Avventuriero);}
-    public static double percAvventuriero(){return (0.0 + Avventuriero) / (Morigerato+Avventuriero);}
-    public static double percPrudente() {return (0.0 + Prudente) / (Prudente + Spregiudicata);}
-    public static double percSpregiudicata() {return (0.0 + Spregiudicata) / (Prudente + Spregiudicata);}
+    public static double percMorigerato() {
+        // Se la popolazione corrente è minore di 0
+        if (Morigerato <= 0) return 0;
+        // Se l'altra popolazione è minore di 0
+        if (Avventuriero <= 0) return 1;
+        // Nel caso in cui siano entrambi > 0
+        else return (0.0 + Morigerato) / (Morigerato+Avventuriero);
+    }
+    public static double percAvventuriero() {
+        if (Avventuriero <= 0) return 0;
+        if (Morigerato <= 0) return 1;
+        else return (0.0 + Avventuriero) / (Morigerato+Avventuriero);
+    }
+    public static double percPrudente() {
+        if (Prudente <= 0) return 0;
+        if (Spregiudicata <= 0) return 1;
+
+        else return (0.0 + Prudente) / (Prudente + Spregiudicata);
+    }
+    public static double percSpregiudicata() {
+        if (Spregiudicata <= 0) return 0;
+        if (Prudente <= 0) return 1;
+        else return (0.0 + Spregiudicata) / (Prudente + Spregiudicata);
+    }
 
 
     // Stampa le percetuali (valori 0<v<1)
