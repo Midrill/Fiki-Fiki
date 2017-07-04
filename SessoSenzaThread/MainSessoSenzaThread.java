@@ -13,5 +13,9 @@ public class MainSessoSenzaThread {
 
         Accopiamento Acc = new Accopiamento(M, A, P, S);
         Acc.centroAccoppiamento();
+        System.out.println(Acc.MAPS);
+        for (int i= 0; i < 200; i++){
+            System.out.println(Acc.MAPS[i]);
+        }
     }
 }
