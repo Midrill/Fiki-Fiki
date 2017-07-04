@@ -141,7 +141,7 @@ public class Controller implements Initializable {
                 PChart.getData().add(Pserie);
                 SChart.getData().add(Sserie);
             }
-
+            start.setText("Start Simulation");
 
         }
         else{start.setText("Not Valid Data");}
