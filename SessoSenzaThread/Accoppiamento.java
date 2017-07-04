@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by utente on 22/06/2017.
  */
-public class Accopiamento {
+public class Accoppiamento {
 
     Persone Per;
     PayOff Cost;
@@ -17,15 +17,15 @@ public class Accopiamento {
     int indice;
 
     // Costruttore accoppiamento, prende 7 parametri, i primi 4 sono le persone e gli ultimi 3 sono i payoff
-    public Accopiamento(int M,int A,int P,int S, int a, int b, int c){
+    public Accoppiamento(int M, int A, int P, int S, int a, int b, int c){
         this.Per = new Persone(M,A,P,S);
         this.Cost = new PayOff(a,b,c);
     }
-    public Accopiamento(int M, int A, int P, int S) {
+    public Accoppiamento(int M, int A, int P, int S) {
         this.Per = new Persone(M,A,P,S);
         this.Cost = new PayOff();
     }
-    public Accopiamento(){
+    public Accoppiamento(){
         this.Per =  new Persone();
         this.Cost = new PayOff();
     }
