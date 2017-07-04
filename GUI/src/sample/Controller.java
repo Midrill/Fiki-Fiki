@@ -88,7 +88,7 @@ public class Controller implements Initializable {
                 + " a= " +  a + " b=" + b + " c=" + c );
         Accopiamento acc = new Accopiamento(morigerati, avventurieri, prudenti, spregiudicate, a, b, c);
         acc.centroAccoppiamento();
-        double[] evolution = acc.output();
+        double[] evolution = acc.stampaArray();
         return evolution;
 
     }
