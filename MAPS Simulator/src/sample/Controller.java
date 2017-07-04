@@ -92,14 +92,31 @@ public class Controller implements Initializable {
 
     @FXML
     private void HandleClick(){
-        if(Integer.parseInt( M.getText() ) > 0 & Integer.parseInt( A.getText() ) > 0 &
-                Integer.parseInt( P.getText() ) > 0 & Integer.parseInt( S.getText() ) > 0 &
+        int Mvar = Integer.parseInt( M.getText() );
+        int Avar = Integer.parseInt( A.getText() );
+        int Pvar = Integer.parseInt( P.getText() );
+        int Svar = Integer.parseInt( S.getText() );
+        int total = Mvar + Avar + Pvar + Svar;
+        if(Mvar > 0 & Avar > 0 & Pvar > 0 & Svar > 0 &
                 isInteger(a.getText()) & isInteger(b.getText()) & isInteger(c.getText()) ){
             start.setText("Simulating");
             MAPSStartChart.getData().add(new PieChart.Data("Morigerati", Integer.parseInt( M.getText() )) );
             MAPSStartChart.getData().add(new PieChart.Data("Avventurieri", Integer.parseInt( A.getText() )) );
             MAPSStartChart.getData().add(new PieChart.Data("Prudenti", Integer.parseInt( P.getText() )) );
             MAPSStartChart.getData().add(new PieChart.Data("Spregiudicate", Integer.parseInt( S.getText() )) );
+            XYChart.Series zeroMserie = new XYChart.Series();
+            XYChart.Series zeroAserie = new XYChart.Series();
+            XYChart.Series zeroPserie = new XYChart.Series();
+            XYChart.Series zeroSserie = new XYChart.Series();
+            zeroMserie.getData().add(new XYChart.Data( "0", Mvar*100/total ) );
+            zeroAserie.getData().add(new XYChart.Data( "0", Avar*100/total ) );
+            zeroPserie.getData().add(new XYChart.Data( "0", Pvar*100/total ) );
+            zeroSserie.getData().add(new XYChart.Data( "0", Svar*100/total ) );
+            MChart.getData().add(zeroMserie);
+            AChart.getData().add(zeroAserie);
+            PChart.getData().add(zeroPserie);
+            SChart.getData().add(zeroSserie);
+
 
             double[] evolution = LaunchSimulation(Integer.parseInt( M.getText() ), Integer.parseInt( A.getText() ),
                     Integer.parseInt( P.getText() ), Integer.parseInt( S.getText() ),
@@ -115,10 +132,10 @@ public class Controller implements Initializable {
                 XYChart.Series Aserie = new XYChart.Series();
                 XYChart.Series Pserie = new XYChart.Series();
                 XYChart.Series Sserie = new XYChart.Series();
-                Mserie.getData().add(new XYChart.Data( new Integer(index/4).toString(), evolution[index] * 100  ) );
-                Aserie.getData().add(new XYChart.Data( new Integer(index/4).toString(), evolution[index + 1] * 100 ) );
-                Pserie.getData().add(new XYChart.Data( new Integer(index/4).toString(), evolution[index + 2] * 100 ) );
-                Sserie.getData().add(new XYChart.Data( new Integer(index/4).toString(), evolution[index + 3] * 100 ) );
+                Mserie.getData().add(new XYChart.Data( new Integer(index/4 + 1).toString(), evolution[index] * 100  ) );
+                Aserie.getData().add(new XYChart.Data( new Integer(index/4 + 1).toString(), evolution[index + 1] * 100 ) );
+                Pserie.getData().add(new XYChart.Data( new Integer(index/4 + 1).toString(), evolution[index + 2] * 100 ) );
+                Sserie.getData().add(new XYChart.Data( new Integer(index/4 + 1).toString(), evolution[index + 3] * 100 ) );
                 MChart.getData().add(Mserie);
                 AChart.getData().add(Aserie);
                 PChart.getData().add(Pserie);
