@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller = "sample.Controller"
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <children>
+      <SplitPane dividerPositions="0.25" layoutX="87.0" layoutY="78.0" prefHeight="600.0" prefWidth="800.0"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox id="Input VBox" prefHeight="598.0" prefWidth="197.0"
+                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                         <VBox id="Button VBox"
+                               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Button fx:id="start" mnemonicParsing="false"
+                                text="Start Simulation" textAlignment="CENTER" onAction = "#HandleClick"
+                                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                             <Button fx:id="clear" mnemonicParsing="false"
+                                     text="Clear Data" textAlignment="CENTER" onAction = "#HandleClick2"
+                                     AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                         </VBox>
+                        <VBox id="MAPS VBox"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label id="MAPS Label" text="MAPS Input" />
+                              <TextField fx:id="M" text="1000" onAction = "#HandleClick" />
+                              <TextField fx:id="A" text="1000" onAction = "#HandleClick" />
+                              <TextField fx:id="P" text="1000" onAction = "#HandleClick" />
+                              <TextField fx:id="S" text="1000" onAction = "#HandleClick" />
+                           </children>
+                        </VBox>
+                        <VBox id="abc VBox"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label id="abc Label" text="abc Input" />
+                              <TextField fx:id="a" text="15" onAction = "#HandleClick" />
+                              <TextField fx:id="b" text="20" onAction = "#HandleClick" />
+                              <TextField fx:id="c" text="3" onAction = "#HandleClick" />
+                           </children>
+                        </VBox>
+                         <VBox id="PieChart VBox"
+                               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                         </VBox>
+                        <PieChart fx:id="MAPSStartChart" prefHeight="188.0" prefWidth="200.0" title="Initial Stage MAPS Ratio"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        <PieChart fx:id="MAPSEndChart" prefHeight="183.0" prefWidth="200.0" title="Final Stage MAPS Ratio"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0"
+                      AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox id="Population To Equilibrium Chart" prefHeight="474.0" prefWidth="593.0"
+                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <BarChart fx:id="MChart" title="Morigerati"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <xAxis>
+                              <CategoryAxis fx:id= "MxAxis" autoRanging="true" side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id= "MyAxis" autoRanging="false" side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                        <BarChart fx:id="AChart" title="Avventurieri"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <xAxis>
+                              <CategoryAxis fx:id= "AxAxis" autoRanging="true" side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id= "AyAxis" autoRanging="false" side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                        <BarChart fx:id="PChart" title="Prudenti"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <xAxis>
+                              <CategoryAxis fx:id= "PxAxis" autoRanging="true" side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id= "PyAxis" autoRanging="false" side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                        <BarChart fx:id="SChart" title="Spregiudicate"
+                                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <xAxis>
+                              <CategoryAxis fx:id= "SxAxis" autoRanging="true" side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id= "SyAxis" autoRanging="false" side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
