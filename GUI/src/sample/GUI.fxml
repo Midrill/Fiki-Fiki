@@ -54,34 +54,34 @@
                      <children>
                         <BarChart fx:id="MChart" title="Morigerati">
                            <xAxis>
-                              <CategoryAxis side="BOTTOM" />
+                              <CategoryAxis fx:id= "MxAxis" side="BOTTOM" />
                            </xAxis>
                            <yAxis>
-                              <NumberAxis autoRanging="false" side="LEFT" />
+                              <NumberAxis fx:id= "MyAxis" autoRanging="false" side="LEFT" />
                            </yAxis>
                         </BarChart>
                         <BarChart fx:id="AChart" title="Avventurieri">
                            <xAxis>
-                              <CategoryAxis side="BOTTOM" />
+                              <CategoryAxis fx:id= "AxAxis" side="BOTTOM" />
                            </xAxis>
                            <yAxis>
-                              <NumberAxis autoRanging="false" side="LEFT" />
+                              <NumberAxis fx:id= "AyAxis" autoRanging="false" side="LEFT" />
                            </yAxis>
                         </BarChart>
                         <BarChart fx:id="PChart" title="Prudenti">
                            <xAxis>
-                              <CategoryAxis side="BOTTOM" />
+                              <CategoryAxis fx:id= "PxAxis" side="BOTTOM" />
                            </xAxis>
                            <yAxis>
-                              <NumberAxis autoRanging="false" side="LEFT" />
+                              <NumberAxis fx:id= "PyAxis" autoRanging="false" side="LEFT" />
                            </yAxis>
                         </BarChart>
                         <BarChart fx:id="SChart" title="Spregiudicate">
                            <xAxis>
-                              <CategoryAxis side="BOTTOM" />
+                              <CategoryAxis fx:id= "SxAxis" side="BOTTOM" />
                            </xAxis>
                            <yAxis>
-                              <NumberAxis autoRanging="false" side="LEFT" />
+                              <NumberAxis fx:id= "SyAxis" autoRanging="false" side="LEFT" />
                            </yAxis>
                         </BarChart>
                      </children>

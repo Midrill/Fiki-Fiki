@@ -1,14 +1,12 @@
 package sample;
 
+import SessoSenzaThread.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.PieChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -22,9 +20,19 @@ import java.util.ResourceBundle;
 import static java.lang.Integer.parseInt;
 
 
-// campi text utilizzati: TextField    M A P S a b c
-// charts utilizzate: PieChart    MAPSStartChart    MAPSEndChart      BarChart    MChart  AChart  PChart  SChart
-// pulsante utilizzato:    Button     start
+// campi text utilizzati: TextField    M A P S
+//                                     a b c
+// charts utilizzate:
+// PieChart    MAPSStartChart
+//             MAPSEndChart
+// BarChart    MChart    MyAxis (Number)    MxAxis (Number)
+//             AChart    AyAxis (Number)    AxAxis (Number)
+//             PChart    PyAxis (Number)    PxAxis (Number)
+//             SChart    SyAxis (Number)    SxAxis (Number)
+//             *yAxis indica la % della popolazione
+//             *xAxis indica lo stadio nel quale si e presentata
+// pulsante utilizzato:
+// Button      start
 
 
 /* pseudocodice dell implementazione dell handleclick
@@ -53,10 +61,20 @@ public class Controller implements Initializable {
     @FXML private PieChart MAPSStartChart;
     @FXML private PieChart MAPSEndChart;
 
-    @FXML private BarChart MChart;
-    @FXML private BarChart AChart;
-    @FXML private BarChart PChart;
-    @FXML private BarChart SChart;
+    @FXML private NumberAxis MyAxis;
+    @FXML private CategoryAxis MxAxis;
+    @FXML private NumberAxis AyAxis;
+    @FXML private CategoryAxis AxAxis;
+    @FXML private NumberAxis PyAxis;
+    @FXML private CategoryAxis PxAxis;
+    @FXML private NumberAxis SyAxis;
+    @FXML private CategoryAxis SxAxis;
+
+
+    @FXML private BarChart<String, Number> MChart;
+    @FXML private BarChart<String, Number> AChart;
+    @FXML private BarChart<String, Number> PChart;
+    @FXML private BarChart<String, Number> SChart;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,15 +83,17 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void LaunchSimulation(int morigerati, int avventurieri, int prudenti, int spregiudicate, int a, int b, int c){
+    private double[] LaunchSimulation(int morigerati, int avventurieri, int prudenti, int spregiudicate, int a, int b, int c){
         System.out.println("Simulation started with costants: M=" + morigerati + " A=" + avventurieri + " P=" + prudenti + " S=" + spregiudicate
                 + " a= " +  a + " b=" + b + " c=" + c );
-
-        
+        Accopiamento acc = new Accopiamento(morigerati, avventurieri, prudenti, spregiudicate, a, b, c);
+        acc.centroAccoppiamento();
+        double[] evolution = acc.output();
+        return evolution;
 
     }
 
-    public static boolean isInteger(String s) {
+    private static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);
         } catch(NumberFormatException e) {
@@ -96,9 +116,30 @@ public class Controller implements Initializable {
             MAPSStartChart.getData().add(new PieChart.Data("Prudenti", Integer.parseInt( P.getText() )) );
             MAPSStartChart.getData().add(new PieChart.Data("Spregiudicate", Integer.parseInt( S.getText() )) );
 
-            LaunchSimulation(Integer.parseInt( M.getText() ), Integer.parseInt( A.getText() ),
+            double[] evolution = LaunchSimulation(Integer.parseInt( M.getText() ), Integer.parseInt( A.getText() ),
                     Integer.parseInt( P.getText() ), Integer.parseInt( S.getText() ),
                     Integer.parseInt( a.getText() ), Integer.parseInt( b.getText() ), Integer.parseInt( c.getText() ) );
+            for(int index = 0; index < evolution.length; index = index + 4 ){
+                if(index == evolution.length - 4){
+                    MAPSEndChart.getData().add(new PieChart.Data("Morigerati", evolution[index] * 100) );
+                    MAPSEndChart.getData().add(new PieChart.Data("Avventurieri", evolution[index + 1] * 100) );
+                    MAPSEndChart.getData().add(new PieChart.Data("Prudenti", evolution[index + 2] * 100) );
+                    MAPSEndChart.getData().add(new PieChart.Data("Spregiudicate", evolution[index + 3] * 100 ) );
+                }
+                XYChart.Series Mserie = new XYChart.Series();
+                XYChart.Series Aserie = new XYChart.Series();
+                XYChart.Series Pserie = new XYChart.Series();
+                XYChart.Series Sserie = new XYChart.Series();
+                Mserie.getData().add(new XYChart.Data( new Integer(index/4).toString(), evolution[index] * 100  ) );
+                Aserie.getData().add(new XYChart.Data( new Integer(index/4).toString(), evolution[index + 1] * 100 ) );
+                Pserie.getData().add(new XYChart.Data( new Integer(index/4).toString(), evolution[index + 2] * 100 ) );
+                Sserie.getData().add(new XYChart.Data( new Integer(index/4).toString(), evolution[index + 3] * 100 ) );
+                MChart.getData().add(Mserie);
+                AChart.getData().add(Aserie);
+                PChart.getData().add(Pserie);
+                SChart.getData().add(Sserie);
+            }
+
 
         }
         else{start.setText("Not Valid Data");}
