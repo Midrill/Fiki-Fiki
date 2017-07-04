@@ -122,6 +122,11 @@ public class Accopiamento {
             System.out.print("Ciclo N: " + (n+1) +"  ");
             Per.stampaPerc();
         }
+        this.stampaArray();
+    }
+
+    public double[] stampaArray() {
+        return MAPS;
     }
 
     // Figli Morigerato

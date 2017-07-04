@@ -13,6 +13,5 @@ public class MainSessoSenzaThread {
 
         Accopiamento Acc = new Accopiamento(M, A, P, S);
         Acc.centroAccoppiamento();
-
     }
 }
