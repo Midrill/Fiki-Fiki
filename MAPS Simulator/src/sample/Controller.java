@@ -92,13 +92,13 @@ public class Controller implements Initializable {
 
     @FXML
     private void HandleClick(){
-        int Mvar = Integer.parseInt( M.getText() );
-        int Avar = Integer.parseInt( A.getText() );
-        int Pvar = Integer.parseInt( P.getText() );
-        int Svar = Integer.parseInt( S.getText() );
-        int total = Mvar + Avar + Pvar + Svar;
-        if(Mvar > 0 & Avar > 0 & Pvar > 0 & Svar > 0 &
+        if(isInteger(M.getText()) & isInteger(A.getText()) & isInteger(P.getText()) & isInteger(S.getText()) &
                 isInteger(a.getText()) & isInteger(b.getText()) & isInteger(c.getText()) ){
+            int Mvar = Integer.parseInt( M.getText() );
+            int Avar = Integer.parseInt( A.getText() );
+            int Pvar = Integer.parseInt( P.getText() );
+            int Svar = Integer.parseInt( S.getText() );
+            int total = Mvar + Avar + Pvar + Svar;
             start.setText("Simulating");
             MAPSStartChart.getData().add(new PieChart.Data("Morigerati", Integer.parseInt( M.getText() )) );
             MAPSStartChart.getData().add(new PieChart.Data("Avventurieri", Integer.parseInt( A.getText() )) );
@@ -118,8 +118,7 @@ public class Controller implements Initializable {
             SChart.getData().add(zeroSserie);
 
 
-            double[] evolution = LaunchSimulation(Integer.parseInt( M.getText() ), Integer.parseInt( A.getText() ),
-                    Integer.parseInt( P.getText() ), Integer.parseInt( S.getText() ),
+            double[] evolution = LaunchSimulation(Mvar, Avar, Pvar, Svar,
                     Integer.parseInt( a.getText() ), Integer.parseInt( b.getText() ), Integer.parseInt( c.getText() ) );
             for(int index = 0; index < evolution.length; index = index + 4 ){
                 if(index == evolution.length - 4){

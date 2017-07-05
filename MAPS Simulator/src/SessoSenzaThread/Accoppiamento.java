@@ -60,7 +60,7 @@ public class Accoppiamento {
         indice = 0;
 
         int z = 1;
-        int equilibrio = 0;
+        //int equilibrio = 0;
         for (int n = 0; n < cicli; n++) {
 
             // rimpicciolisce i numeri dimezzanoli (servono numeri >100)
@@ -82,7 +82,7 @@ public class Accoppiamento {
                 float bP = bonusPrudente();
                 float bS = bonusSpregiudicata();
 
-                // MORIGERATI Domninano
+                // MORIGERATI Dominano
                 if (bM > bA) {
                     Persone.Morigerato += 1;
                     Persone.Avventuriero -= 1;
@@ -130,20 +130,20 @@ public class Accoppiamento {
     }
 
     // Figli Morigerato
-    public void coppiaMxP(){Persone.Morigerato++; Persone.Prudente ++;}
-    public void coppiaMxS(){Persone.Morigerato++; Persone.Spregiudicata ++;}
+    public void coppiaMxP(){Persone.Morigerato += 2; Persone.Prudente += 2;}
+    public void coppiaMxS(){Persone.Morigerato += 2; Persone.Spregiudicata += 2;}
 
     // Figli Avventuriero
-    public void coppiaAxP(){Persone.Avventuriero++; Persone.Prudente ++;}
-    public void coppiaAxS(){Persone.Avventuriero++; Persone.Spregiudicata ++;}
+    public void coppiaAxP(){Persone.Avventuriero += 2; Persone.Prudente += 2;}
+    public void coppiaAxS(){Persone.Avventuriero += 2; Persone.Spregiudicata += 2;}
 
     // Figli Prudente
-    public void coppiaPxM(){Persone.Prudente++; Persone.Morigerato++;}
-    public void coppiaPxA(){Persone.Prudente++; Persone.Avventuriero++;}
+    public void coppiaPxM(){Persone.Prudente += 2; Persone.Morigerato += 2;}
+    public void coppiaPxA(){Persone.Prudente += 2; Persone.Avventuriero += 2;}
 
 
     // Figli Spregiudicata
-    public void coppiaSxM(){Persone.Spregiudicata++; Persone.Morigerato++;}
-    public void coppiaSxA(){Persone.Spregiudicata++; Persone.Avventuriero++;}
+    public void coppiaSxM(){Persone.Spregiudicata += 2; Persone.Morigerato += 2;}
+    public void coppiaSxA(){Persone.Spregiudicata += 2; Persone.Avventuriero += 2;}
 
 }
